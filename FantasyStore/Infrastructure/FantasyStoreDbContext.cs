@@ -1,0 +1,23 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Data.Entity;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using FantasyStore.Domain;
+
+namespace FantasyStore.Infrastructure
+{
+    public class FantasyStoreDbContext : DbContext
+    {
+        public FantasyStoreDbContext()
+            : base("name=FantasyStoreStr")
+        {
+        }
+
+        public DbSet<Product> Products { get; set; }
+        public DbSet<Variant> Variants { get; set; }
+        public DbSet<Order> Orders { get; set; }
+        public DbSet<Item> Items { get; set; }
+    }
+}
