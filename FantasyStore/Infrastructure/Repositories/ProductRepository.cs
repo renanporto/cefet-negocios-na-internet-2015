@@ -31,7 +31,7 @@ namespace FantasyStore.Infrastructure.Repositories
             return _context.Products.Where(p => p.Name.Contains(name));
         }
 
-        public void Save(Product product)
+        public void Insert(Product product)
         {
             _context.Products.Add(product);
         }

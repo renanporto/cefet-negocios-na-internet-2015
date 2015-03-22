@@ -31,7 +31,7 @@ namespace FantasyStore.Infrastructure.Repositories
             return _context.Variants.Where(p => p.Name.Contains(name));
         }
 
-        public void Save(Variant variant)
+        public void Insert(Variant variant)
         {
             _context.Variants.Add(variant);
         }

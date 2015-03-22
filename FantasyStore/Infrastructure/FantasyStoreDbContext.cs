@@ -19,5 +19,8 @@ namespace FantasyStore.Infrastructure
         public DbSet<Variant> Variants { get; set; }
         public DbSet<Order> Orders { get; set; }
         public DbSet<Item> Items { get; set; }
+        public DbSet<Account> Accounts { get; set; }
+        public DbSet<Address> Addresses { get; set; }
+        public DbSet<Client> Clients { get; set; }
     }
 }

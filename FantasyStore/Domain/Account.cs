@@ -6,22 +6,29 @@ using System.Threading.Tasks;
 
 namespace FantasyStore.Domain
 {
-    public class User
+    public class Account
     {
-        public User()
+        public Account()
         {
 
         }
 
-        public User(int id, string userName, string password)
+        public Account(int id, string userName, string password)
         {
             Id = id;
             UserName = userName;
             Password = password;
         }
 
+        private IEnumerable<Order> _orders; 
         public int Id { get; set; }
         public string UserName { get; set; }
         public string Password { get; set; }
+
+        public IEnumerable<Order> Orders
+        {
+            get { return _orders ?? (_orders = new List<Order>()); }
+            set { _orders = value; }
+        }
     }
 }
