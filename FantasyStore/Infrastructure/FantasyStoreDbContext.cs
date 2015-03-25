@@ -22,5 +22,10 @@ namespace FantasyStore.Infrastructure
         public DbSet<Account> Accounts { get; set; }
         public DbSet<Address> Addresses { get; set; }
         public DbSet<Client> Clients { get; set; }
+        public DbSet<Category> Categories { get; set; }
+        public DbSet<WishList> WishLists { get; set; }
+        public DbSet<Field> Fields { get; set; }
+        public DbSet<FieldValue> FieldValues { get; set; }
+        public DbSet<ProductFieldValue> ProductFieldValues { get; set; }
     }
 }

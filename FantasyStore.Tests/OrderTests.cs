@@ -28,22 +28,11 @@ namespace FantasyStore.Tests
         {
             get
             {
-                var specs110v = new Dictionary<string, string>
-                {
-                    {"Voltagem", "110v"},
-                    {"Cor", "Vermelho"}
-                };
-
-                var specs220v = new Dictionary<string, string>
-                {
-                    {"Voltagem", "110v"},
-                    {"Cor", "Vermelho"}
-                };
 
                 return new List<Variant>
                 {
-                     new Variant(1, "110v", 300, "EAN1234", specs110v, 10),
-                     new Variant(2, "220v", 300, "EAN4567", specs220v, 15)
+                     new Variant(1, "110v", 300, "EAN1234", 10),
+                     new Variant(2, "220v", 300, "EAN4567", 15)
                  };
             }
         }

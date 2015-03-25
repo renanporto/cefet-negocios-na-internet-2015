@@ -8,21 +8,21 @@ namespace FantasyStore.Domain
 {
     public class Variant
     {
-        private Dictionary<string, string> _specifications;
         public Variant()
         {
 
         }
 
-        public Variant(int id, string name, decimal? price, string ean, Dictionary<string, string> specifications, int amountInStock)
+        public Variant(int id, string name, decimal? price, string ean, int amountInStock)
         {
             Id = id;
             Name = name;
             Price = price;
             Ean = ean;
             AmountInStock = amountInStock;
-            _specifications = specifications;
         }
+
+        private ICollection<WishList> _wishLists; 
 
         public int Id { get; set; }
         public string Name { get; set; }
@@ -31,10 +31,11 @@ namespace FantasyStore.Domain
         public Product Product { get; set; }
         public int AmountInStock { get; set; }
 
-        public Dictionary<string, string> Specifications 
+        public ICollection<WishList> WishLists
         {
-            get { return _specifications ?? (_specifications = new Dictionary<string, string>()); }
-            set { _specifications = value; }
+            get { return _wishLists ?? (_wishLists = new List<WishList>()); }
+            set { _wishLists = value; }
         }
+
     }
 }

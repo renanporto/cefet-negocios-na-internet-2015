@@ -7,13 +7,13 @@ namespace FantasyStore.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.1.3-40302")]
-    public sealed partial class orders : IMigrationMetadata
+    public sealed partial class new232 : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(orders));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(new232));
         
         string IMigrationMetadata.Id
         {
-            get { return "201503221924263_orders"; }
+            get { return "201503250830356_new232"; }
         }
         
         string IMigrationMetadata.Source

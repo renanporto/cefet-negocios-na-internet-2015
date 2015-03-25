@@ -49,11 +49,16 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Domain\Address.cs" />
+    <Compile Include="Domain\Category.cs" />
     <Compile Include="Domain\Client.cs" />
+    <Compile Include="Domain\Field.cs" />
+    <Compile Include="Domain\FieldValue.cs" />
     <Compile Include="Domain\Order.cs" />
     <Compile Include="Domain\Product.cs" />
     <Compile Include="Domain\Account.cs" />
+    <Compile Include="Domain\ProductFieldValue.cs" />
     <Compile Include="Domain\Variant.cs" />
+    <Compile Include="Domain\WishList.cs" />
     <Compile Include="Infrastructure\FantasyStoreDbContext.cs" />
     <Compile Include="Infrastructure\Repositories\AdressRepository.cs" />
     <Compile Include="Infrastructure\Repositories\ClientRepository.cs" />
@@ -61,9 +66,9 @@
     <Compile Include="Infrastructure\Repositories\ProductRepository.cs" />
     <Compile Include="Infrastructure\Repositories\VariantRepository.cs" />
     <Compile Include="Infrastructure\UnitOfWork.cs" />
-    <Compile Include="Migrations\201503221924263_orders.cs" />
-    <Compile Include="Migrations\201503221924263_orders.Designer.cs">
-      <DependentUpon>201503221924263_orders.cs</DependentUpon>
+    <Compile Include="Migrations\201503250830356_new232.cs" />
+    <Compile Include="Migrations\201503250830356_new232.Designer.cs">
+      <DependentUpon>201503250830356_new232.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -73,8 +78,8 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201503221924263_orders.resx">
-      <DependentUpon>201503221924263_orders.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201503250830356_new232.resx">
+      <DependentUpon>201503250830356_new232.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
