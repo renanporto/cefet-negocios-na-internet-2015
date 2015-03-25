@@ -1,0 +1,365 @@
+﻿@{
+    ViewBag.Title = "Fantasy Store";
+    Layout = "../Shared/_Layout.cshtml";
+}
+
+<style>
+    html, body {
+        height: 100%;
+        width: 100%;
+    }
+
+    .title {
+        color: orangered;
+        font-family: Impact;
+        font-weight: bolder;
+        font-size: 40pt;
+    }
+
+    .product-name {
+        font-family: Impact;
+        font-size: 13pt;
+        color: cadetblue;
+    }
+
+    .price-from {
+        color: darkgray;
+        font-size: 10pt;
+    }
+
+    .price-to {
+        color: green;
+        font-size: 13pt;
+        font-weight: bold;
+    }
+
+    .product-info {
+        margin: auto;
+    }
+
+    .section-title {
+        color: midnightblue;
+        font-family: Impact;
+        font-size: 18pt;
+    }
+
+    .product-wrapper {
+        border: 2px solid lightgray;
+        height: 100%;
+        border-radius: 4px;
+        width: 270px;
+        float: left;
+        margin-left: 13px;
+    }
+
+    footer {
+        background-color: lightgray;
+        height: 70px;
+        width: 100%;
+        border: 1px solid grey;
+        border-radius: 3px;
+    }
+</style>
+<div class="container">
+    <div class="row" style="min-height: 800px;">
+        <div class="row" style="min-height: 300px; width: 100%; margin: auto;">
+            <div style="height: 100%; width: 100%;">
+                <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+                <span class="section-title">Fantasias em destaque</span>
+            </div>
+
+            <div class="col-md-3 product-wrapper">
+                <a href="#">
+                    <img src="../../Content/Images/princesa-rubi.jpg" alt="Fantasia Princesa Rubi" />
+                </a>
+                <div class="product-info">
+                    <p>
+                        <a href="#"><span class="product-name">Fantasia Princesa Rubi Verão</span></a>
+                        <a href="#"><span class="glyphicon glyphicon-plus" aria-hidden="true" style="margin-left: 6px;"></span></a>
+                        <br />
+                        <span class="price-from">De: R$ 99,90</span>
+                        <br />
+                        <span class="price-to">Por: R$ 79,90</span>
+                        <span style="margin-left: 20px;">
+                            <button class="btn btn-primary btn-xs">
+                                <span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span><span style="margin-left: 5px;">Comprar</span>
+                            </button>
+                        </span>
+                        <br />
+                    </p>
+                </div>
+            </div>
+
+            <div class="col-md-3 product-wrapper">
+                <a href="#">
+                    <img src="../../Content/Images/theflash.jpg" alt="" />
+                </a>
+                <div class="product-info">
+                    <p>
+                        <a href="#"><span class="product-name">Fantasia The Flash - DC</span></a>
+                        <a href="#"><span class="glyphicon glyphicon-plus" aria-hidden="true" style="margin-left: 6px;"></span></a>
+                        <br />
+                        <span class="price-from">De: R$ 160,00</span>
+                        <br />
+                        <span class="price-to">Por: R$ 120,00</span>
+                        <span style="margin-left: 20px;">
+                            <button class="btn btn-primary btn-xs">
+                                <span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span><span style="margin-left: 5px;">Comprar</span>
+                            </button>
+                        </span>
+                        <br />
+                    </p>
+                </div>
+            </div>
+
+            <div class="col-md-3 product-wrapper">
+                <a href="#">
+                    <img src="../../Content/Images/vampira.jpg" alt="Vampira Adulta" />
+                </a>
+                <div class="product-info">
+                    <p>
+                        <a href="#"><span class="product-name">Fantasia Vampira Adulto</span></a>
+                        <a href="#"><span class="glyphicon glyphicon-plus" aria-hidden="true" style="margin-left: 6px;"></span></a>
+                        <br />
+                        <span class="price-from">De: R$ 140,00</span>
+                        <br />
+                        <span class="price-to">Por: R$ 100,00</span>
+                        <span style="margin-left: 20px;">
+                            <button class="btn btn-primary btn-xs">
+                                <span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span><span style="margin-left: 5px;">Comprar</span>
+                            </button>
+                        </span>
+                        <br />
+                    </p>
+                </div>
+            </div>
+
+            <div class="col-md-3 product-wrapper">
+                <a href="#">
+                    <img src="../../Content/Images/esqueletoadulto.jpg" alt="" />
+                </a>
+                <div class="product-info">
+                    <p>
+                        <a href="#"><span class="product-name">Fantasia Esqueleto Adulto</span></a>
+                        <a href="#"><span class="glyphicon glyphicon-plus" aria-hidden="true" style="margin-left: 6px;"></span></a>
+                        <br />
+                        <span class="price-from">De: R$ 149,90</span>
+                        <br />
+                        <span class="price-to">Por: R$ 99,90</span>
+                        <span style="margin-left: 20px;">
+                            <button class="btn btn-primary btn-xs">
+                                <span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span><span style="margin-left: 5px;">Comprar</span>
+                            </button>
+                        </span>
+                        <br />
+                    </p>
+                </div>
+            </div>
+        </div>
+        
+        <br/>
+
+        <div class="row" style="min-height: 300px; width: 100%; margin: auto;">
+            <div style="height: 100%; width: 100%;">
+                <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+                <span class="section-title">Lançamentos</span>
+            </div>
+
+            <div class="col-md-3 product-wrapper">
+                <a href="#">
+                    <img src="../../Content/Images/fredkruger-adulto.jpg" alt="" />
+                </a>
+                <div class="product-info">
+                    <p>
+                        <a href="#"><span class="product-name">Fantasia Freddy Krueger</span></a>
+                        <a href="#"><span class="glyphicon glyphicon-plus" aria-hidden="true" style="margin-left: 6px;"></span></a>
+                        <br />
+                        <span class="price-from">De: R$ 269,90</span>
+                        <br />
+                        <span class="price-to">Por: R$ 229,90</span>
+                        <span style="margin-left: 20px;">
+                            <button class="btn btn-primary btn-xs">
+                                <span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span><span style="margin-left: 5px;">Comprar</span>
+                            </button>
+                        </span>
+                        <br />
+                    </p>
+                </div>
+            </div>
+
+            <div class="col-md-3 product-wrapper">
+                <a href="#">
+                    <img src="../../Content/Images/marinheiro.jpg" alt="" />
+                </a>
+                <div class="product-info">
+                    <p>
+                        <a href="#"><span class="product-name">Fantasia de Marinheiro</span></a>
+                        <a href="#"><span class="glyphicon glyphicon-plus" aria-hidden="true" style="margin-left: 6px;"></span></a>
+                        <br />
+                        <span class="price-from">De: R$ 159,90</span>
+                        <br />
+                        <span class="price-to">Por: R$ 119,90</span>
+                        <span style="margin-left: 20px;">
+                            <button class="btn btn-primary btn-xs">
+                                <span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span><span style="margin-left: 5px;">Comprar</span>
+                            </button>
+                        </span>
+                        <br />
+                    </p>
+                </div>
+            </div>
+
+            <div class="col-md-3 product-wrapper">
+                <a href="#">
+                   <img src="../../Content/Images/policial-feminina.jpg" alt="" />
+                </a>
+                <div class="product-info">
+                    <p>
+                        <a href="#"><span class="product-name">Fantasia Policial Feminina</span></a>
+                        <a href="#"><span class="glyphicon glyphicon-plus" aria-hidden="true" style="margin-left: 6px;"></span></a>
+                        <br />
+                        <span class="price-from">De: R$ 239,90</span>
+                        <br />
+                        <span class="price-to">Por: R$ 199,90</span>
+                        <span style="margin-left: 20px;">
+                            <button class="btn btn-primary btn-xs">
+                                <span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span><span style="margin-left: 5px;">Comprar</span>
+                            </button>
+                        </span>
+                        <br />
+                    </p>
+                </div>
+            </div>
+
+            <div class="col-md-3 product-wrapper">
+                <a href="#">
+                    <img src="../../Content/Images/bruxa.jpg" alt="" />
+                </a>
+                <div class="product-info">
+                    <p>
+                        <a href="#"><span class="product-name">Fantasia Bruxa</span></a>
+                        <a href="#"><span class="glyphicon glyphicon-plus" aria-hidden="true" style="margin-left: 6px;"></span></a>
+                        <br />
+                        <span class="price-from">De: R$ 199,00</span>
+                        <br />
+                        <span class="price-to">Por: R$ 159,00</span>
+                        <span style="margin-left: 20px;">
+                            <button class="btn btn-primary btn-xs">
+                                <span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span><span style="margin-left: 5px;">Comprar</span>
+                            </button>
+                        </span>
+                        <br />
+                    </p>
+                </div>
+            </div>
+
+        </div>
+
+        <br/>
+
+        <div class="row" style="min-height: 300px; width: 100%; margin: auto;">
+            <div style="height: 100%; width: 100%;">
+                <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+                <span class="section-title">Infantis</span>
+            </div>
+
+            <div class="col-md-3 product-wrapper">
+                <a href="#">
+                   <img src="../../Content/Images/lanterna-verde.jpg" alt="" />
+                </a>
+                <div class="product-info">
+                    <p>
+                        <a href="#"><span class="product-name">Fantasia Lanterna Verde</span></a>
+                        <a href="#"><span class="glyphicon glyphicon-plus" aria-hidden="true" style="margin-left: 6px;"></span></a>
+                        <br />
+                        <span class="price-from">De: R$ 99,00</span>
+                        <br />
+                        <span class="price-to">Por: R$ 79,00</span>
+                        <span style="margin-left: 20px;">
+                            <button class="btn btn-primary btn-xs">
+                                <span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span><span style="margin-left: 5px;">Comprar</span>
+                            </button>
+                        </span>
+                        <br />
+                    </p>
+                </div>
+            </div>
+
+            <div class="col-md-3 product-wrapper">
+                <a href="#">
+                    <img src="../../Content/Images/batman-infantil.jpg" alt="" />
+                </a>
+                <div class="product-info">
+                    <p>
+                        <a href="#"><span class="product-name">Fantasia Batman</span></a>
+                        <a href="#"><span class="glyphicon glyphicon-plus" aria-hidden="true" style="margin-left: 6px;"></span></a>
+                        <br />
+                        <span class="price-from">De: R$ 159,00</span>
+                        <br />
+                        <span class="price-to">Por: R$ 119,00</span>
+                        <span style="margin-left: 20px;">
+                            <button class="btn btn-primary btn-xs">
+                                <span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span><span style="margin-left: 5px;">Comprar</span>
+                            </button>
+                        </span>
+                        <br />
+                    </p>
+                </div>
+            </div>
+
+            <div class="col-md-3 product-wrapper">
+                <a href="#">
+                    <img src="../../Content/Images/superman-infantil.jpg" alt="" />
+                </a>
+                <div class="product-info">
+                    <p>
+                        <a href="#"><span class="product-name">Fantasia Superman</span></a>
+                        <a href="#"><span class="glyphicon glyphicon-plus" aria-hidden="true" style="margin-left: 6px;"></span></a>
+                        <br />
+                        <span class="price-from">De: R$ 139,00</span>
+                        <br />
+                        <span class="price-to">Por: R$ 99,00</span>
+                        <span style="margin-left: 20px;">
+                            <button class="btn btn-primary btn-xs">
+                                <span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span><span style="margin-left: 5px;">Comprar</span>
+                            </button>
+                        </span>
+                        <br />
+                    </p>
+                </div>
+            </div>
+
+            <div class="col-md-3 product-wrapper">
+                <a href="#">
+                    <img src="../../Content/Images/power-infantil.jpg" alt="" />
+                </a>
+                <div class="product-info">
+                    <p>
+                        <a href="#"><span class="product-name">Power Rangers Azul</span></a>
+                        <a href="#"><span class="glyphicon glyphicon-plus" aria-hidden="true" style="margin-left: 6px;"></span></a>
+                        <br />
+                        <span class="price-from">De: R$ 159,00</span>
+                        <br />
+                        <span class="price-to">Por: R$ 99,00</span>
+                        <span style="margin-left: 20px;">
+                            <button class="btn btn-primary btn-xs">
+                                <span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span><span style="margin-left: 5px;">Comprar</span>
+                            </button>
+                        </span>
+                        <br />
+                    </p>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+        <br/><br/><br/>
+        
+    <footer>
+        <p style="margin-left:500px; font-size: 10pt;">Desenvolvido por Renan Porto</p>
+    </footer>
+
+</div>
+
+
