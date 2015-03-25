@@ -39,5 +39,18 @@ namespace FantasyStore.WebApp.Controllers
             return View();
         }
 
+
+        [HttpGet]
+        public ActionResult About()
+        {
+            return View();
+        }
+
+        [HttpGet]
+        public ActionResult Contact()
+        {
+            return View();
+        }
+
     }
 }
