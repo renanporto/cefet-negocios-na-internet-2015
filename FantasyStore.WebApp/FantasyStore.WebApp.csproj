@@ -97,12 +97,26 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\Images\batman-infantil.jpg" />
+    <Content Include="Content\Images\bruxa.jpg" />
+    <Content Include="Content\Images\esqueletoadulto.jpg" />
+    <Content Include="Content\Images\fredkruger-adulto.jpg" />
+    <Content Include="Content\Images\lanterna-verde.jpg" />
+    <Content Include="Content\Images\marinheiro.jpg" />
+    <Content Include="Content\Images\policial-feminina.jpg" />
+    <Content Include="Content\Images\power-infantil.jpg" />
+    <Content Include="Content\Images\superman-infantil.jpg" />
+    <Content Include="Content\Images\theflash.jpg" />
+    <Content Include="Content\Images\princesa-rubi.jpg" />
+    <Content Include="Content\Images\vampira.jpg" />
+    <Content Include="css\style.css" />
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\web.config" />
     <Content Include="packages.config" />
     <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\Home\Login.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -136,7 +150,9 @@
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
     <Content Include="Scripts\modernizr-2.6.2.js" />
     <Content Include="Scripts\npm.js" />
-    <Content Include="Web.config" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Scripts\jquery-1.10.2.min.map" />
   </ItemGroup>
   <ItemGroup>

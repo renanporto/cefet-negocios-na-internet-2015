@@ -32,5 +32,12 @@ namespace FantasyStore.WebApp.Controllers
         //    }
         //    return View(productsByCategory);
         //}
+
+        [HttpGet]
+        public ActionResult Login()
+        {
+            return View();
+        }
+
     }
 }

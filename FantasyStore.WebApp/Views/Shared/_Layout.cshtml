@@ -3,6 +3,15 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+         .title {
+        color: orangered;
+        font-family: Impact;
+        font-weight: bolder;
+        font-size: 40pt;
+    }
+
+    </style>
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
     <title>Página inicial - Fantasy Store</title>
@@ -13,7 +22,7 @@
         <nav class="navbar navbar-default">
             <div class="container-fluid">
                 <div class="navbar-header">
-                    <a class="navbar-brand" href="#">Menu</a>
+                    <a class="navbar-brand" href="/Home">Home</a>
                 </div>
                 <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                     <ul class="nav navbar-nav">
@@ -33,14 +42,14 @@
                     <form class="navbar-form navbar-left" role="search">
                         <div class="col-lg-6">
                             <div class="input-group" style="margin-left:30px;">
-                                <input type="text" class="form-control" style="width: 500px;" placeholder="Pesquise por nome, código ou faixa de preço do produto">
+                                <input type="text" class="form-control" style="width: 500px;" placeholder="Busque por nome, código ou faixa de preço do produto">
                                 <span class="input-group-btn">
                                     <button class="btn btn-default" type="button">Buscar</button>
                                 </span>
                             </div>
                         </div>
                     </form>
-                    <a href="#"><p class="navbar-text" style="margin-left: 60px;">Login</p></a>
+                    <a href="/Home/Login"><p class="navbar-text" style="margin-left: 60px;">Login</p></a>
                     <ul class="nav navbar-nav navbar-right">
                         <li class="dropdown">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Minhas informações <span class="caret"></span></a>

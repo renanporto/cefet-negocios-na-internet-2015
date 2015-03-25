@@ -1,0 +1,55 @@
+﻿html, body {
+        height: 100%;
+        width: 100%;
+    }
+
+    .title {
+        color: orangered;
+        font-family: Impact;
+        font-weight: bolder;
+        font-size: 40pt;
+    }
+
+    .product-name {
+        font-family: Impact;
+        font-size: 13pt;
+        color: cadetblue;
+    }
+
+    .price-from {
+        color: darkgray;
+        font-size: 10pt;
+    }
+
+    .price-to {
+        color: green;
+        font-size: 13pt;
+        font-weight: bold;
+    }
+
+    .product-info {
+        margin: auto;
+    }
+
+    .section-title {
+        color: midnightblue;
+        font-family: Impact;
+        font-size: 18pt;
+    }
+
+    .product-wrapper {
+        border: 2px solid lightgray;
+        height: 100%;
+        border-radius: 4px;
+        width: 270px;
+        float: left;
+        margin-left: 13px;
+    }
+
+    footer {
+        background-color: lightgray;
+        height: 70px;
+        width: 100%;
+        border: 1px solid grey;
+        border-radius: 3px;
+    }
