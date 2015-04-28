@@ -7,6 +7,7 @@ using FantasyStore.Infrastructure;
 
 namespace FantasyStore.WebApp.Controllers
 {
+    [AllowAnonymous]
     public class HomeController : Controller
     {
         private readonly UnitOfWork unitOfWork = new UnitOfWork();
@@ -32,12 +33,6 @@ namespace FantasyStore.WebApp.Controllers
         //    }
         //    return View(productsByCategory);
         //}
-
-        [HttpGet]
-        public ActionResult Login()
-        {
-            return View();
-        }
 
 
         [HttpGet]
