@@ -8,7 +8,7 @@ using FantasyStore.Infrastructure;
 namespace FantasyStore.WebApp.Controllers
 {
     [AllowAnonymous]
-    public class HomeController : Controller
+    public class HomeController : AppController
     {
         private readonly UnitOfWork unitOfWork = new UnitOfWork();
         // GET: Home
