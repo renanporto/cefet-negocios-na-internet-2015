@@ -3,32 +3,31 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Microsoft.AspNet.Identity.EntityFramework;
 
 namespace FantasyStore.Domain
 {
-    public class Account
+    public class User : IdentityUser
     {
-        public Account()
+        public User()
         {
 
         }
 
-        public Account(int id, string userName, string password)
-        {
-            Id = id;
-            UserName = userName;
-            Password = password;
-        }
-
+        private IEnumerable<Address> _addresses;
         private IEnumerable<Order> _orders; 
-        public int Id { get; set; }
-        public string UserName { get; set; }
         public string Password { get; set; }
 
         public IEnumerable<Order> Orders
         {
             get { return _orders ?? (_orders = new List<Order>()); }
             set { _orders = value; }
+        }
+
+        public IEnumerable<Address> Addresses
+        {
+            get { return _addresses ?? (_addresses = new List<Address>()); }
+            set { _addresses = value; }
         }
     }
 }

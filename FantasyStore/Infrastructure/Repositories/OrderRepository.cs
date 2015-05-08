@@ -26,10 +26,10 @@ namespace FantasyStore.Infrastructure.Repositories
             return _context.Orders;
         }
 
-        public IEnumerable<Order> GetByOwner(int ownerId)
-        {
-            return _context.Orders.Where(o => o.Owner.Id == ownerId);
-        }
+        //public IEnumerable<Order> GetByOwner(int ownerId)
+        //{
+        //    return _context.Orders.Where(o => o.Owner.Id == ownerId);
+        //}
 
         public void Insert(Order order)
         {

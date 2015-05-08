@@ -25,7 +25,7 @@ namespace FantasyStore.Domain
             set { _addresses = value; } 
         }
 
-        public Account User { get; set; }
+        public User User { get; set; }
 
     }
 }

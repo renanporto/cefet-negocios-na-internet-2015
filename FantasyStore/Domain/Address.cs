@@ -34,5 +34,6 @@ namespace FantasyStore.Domain
         public string HouseNumber { get; set; }
         public string Complement { get; set; }
         public bool IsDeliveryAddress { get; set; }
+        public User User { get; set; }
     }
 }

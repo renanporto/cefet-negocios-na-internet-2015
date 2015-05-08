@@ -11,7 +11,7 @@ namespace FantasyStore.Domain
         private IEnumerable<Item> _items; 
         public int Id { get; set; }
 
-        public Account Owner { get; set; }
+        public User Owner { get; set; }
 
         public IEnumerable<Item> Items
         {

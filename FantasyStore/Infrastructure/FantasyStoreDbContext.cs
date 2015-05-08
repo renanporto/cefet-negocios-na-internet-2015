@@ -5,10 +5,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using FantasyStore.Domain;
+using Microsoft.AspNet.Identity.EntityFramework;
 
 namespace FantasyStore.Infrastructure
 {
-    public class FantasyStoreDbContext : DbContext
+    public class FantasyStoreDbContext : IdentityDbContext<User>
     {
         public FantasyStoreDbContext()
             : base("name=FantasyStoreStr")
@@ -19,7 +20,6 @@ namespace FantasyStore.Infrastructure
         public DbSet<Variant> Variants { get; set; }
         public DbSet<Order> Orders { get; set; }
         public DbSet<Item> Items { get; set; }
-        public DbSet<Account> Accounts { get; set; }
         public DbSet<Address> Addresses { get; set; }
         public DbSet<Client> Clients { get; set; }
         public DbSet<Category> Categories { get; set; }
