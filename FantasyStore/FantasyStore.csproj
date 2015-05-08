@@ -87,12 +87,28 @@
     <Compile Include="Infrastructure\Repositories\ProductRepository.cs" />
     <Compile Include="Infrastructure\Repositories\VariantRepository.cs" />
     <Compile Include="Infrastructure\UnitOfWork.cs" />
+    <Compile Include="Migrations\201505081915200_user5.cs" />
+    <Compile Include="Migrations\201505081915200_user5.Designer.cs">
+      <DependentUpon>201505081915200_user5.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201505081918397_user55.cs" />
+    <Compile Include="Migrations\201505081918397_user55.Designer.cs">
+      <DependentUpon>201505081918397_user55.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201505081915200_user5.resx">
+      <DependentUpon>201505081915200_user5.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201505081918397_user55.resx">
+      <DependentUpon>201505081918397_user55.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

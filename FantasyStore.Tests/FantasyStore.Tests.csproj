@@ -85,8 +85,13 @@
   <ItemGroup>
     <Compile Include="OrderTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="UserTests.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\FantasyStore.WebApp\FantasyStore.WebApp.csproj">
+      <Project>{E452072A-E675-43C3-A715-F2840BCBD2AA}</Project>
+      <Name>FantasyStore.WebApp</Name>
+    </ProjectReference>
     <ProjectReference Include="..\FantasyStore\FantasyStore.csproj">
       <Project>{e66afba0-e36a-454c-b054-22b8ac942333}</Project>
       <Name>FantasyStore</Name>

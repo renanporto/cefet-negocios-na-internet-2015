@@ -15,23 +15,24 @@ namespace FantasyStore.WebApp.Controllers
     [AllowAnonymous]
     public class AuthController : Controller
     {
-        private readonly UserManager<User> userManager;
+        private readonly UserManager<User> _userManager;
 
-        public AuthController() : this(Startup.UserManagerFactory.Invoke())
+        public AuthController()
+            : this(Startup.UserManagerFactory.Invoke())
         {
-            
+
         }
 
         public AuthController(UserManager<User> userManager)
         {
-            this.userManager = userManager;
+            this._userManager = userManager;
         }
 
         protected override void Dispose(bool disposing)
         {
-            if (disposing && userManager != null)
+            if (disposing && _userManager != null)
             {
-                userManager.Dispose();
+                _userManager.Dispose();
             }
 
             base.Dispose(disposing);
@@ -49,6 +50,44 @@ namespace FantasyStore.WebApp.Controllers
             return View(model);
         }
 
+        private async Task SignIn(User user)
+        {
+            var identity = await _userManager.CreateIdentityAsync(
+                user, DefaultAuthenticationTypes.ApplicationCookie);
+
+            GetAuthenticationManager().SignIn(identity);
+        }
+
+
+        [HttpPost]
+        public async Task<ActionResult> Register(RegisterModel model)
+        {
+            if (!ModelState.IsValid)
+            {
+                return View();
+            }
+
+            var user = new User
+            {
+                UserName = model.Email
+            };
+
+            var result = await _userManager.CreateAsync(user, model.Password);
+
+            if (result.Succeeded)
+            {
+                await SignIn(user);
+                return RedirectToAction("index", "home");
+            }
+
+            foreach (var error in result.Errors)
+            {
+                ModelState.AddModelError("", error);
+            }
+
+            return View();
+        }
+
         private IAuthenticationManager GetAuthenticationManager()
         {
             var ctx = Request.GetOwinContext();
@@ -63,11 +102,11 @@ namespace FantasyStore.WebApp.Controllers
                 return View();
             }
 
-            var user = await userManager.FindAsync(model.Email, model.Password);
+            var user = await _userManager.FindAsync(model.Email, model.Password);
 
             if (user != null)
             {
-                var identity = await userManager.CreateIdentityAsync(user, DefaultAuthenticationTypes.ApplicationCookie);
+                var identity = await _userManager.CreateIdentityAsync(user, DefaultAuthenticationTypes.ApplicationCookie);
 
                 GetAuthenticationManager().SignIn(identity);
 
@@ -97,5 +136,5 @@ namespace FantasyStore.WebApp.Controllers
             authManager.SignOut("ApplicationCookie");
             return RedirectToAction("index", "home");
         }
-	}
+    }
 }

@@ -19,9 +19,9 @@
 <body>
     <div class="container">
         <h1 class="title">Fantasy Store</h1>
-        @if (!string.IsNullOrWhiteSpace(CurrentUser.Name))
+        @if (CurrentUser != null)
         {
-            <span style="color: cadetblue; margin-left: 850px;">Bem-vindo, <strong>@CurrentUser.Name</strong> </span>
+            <span style="color: cadetblue; margin-left: 850px;">Bem-vindo, <strong>@CurrentUser.FirstName @CurrentUser.LastName</strong> </span>
             <span style="color: darkslategrey; margin-left: 50px; font-weight: bold;"><a href="/Auth/LogOut">Sair</a></span>
         }
         else

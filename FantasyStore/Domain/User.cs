@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Principal;
 using System.Text;
 using System.Threading.Tasks;
 using Microsoft.AspNet.Identity.EntityFramework;
@@ -14,9 +15,14 @@ namespace FantasyStore.Domain
 
         }
 
+        public string FirstName { get; set; }
+        public string LastName { get; set; }
+        public DateTime? BirthDate { get; set; }
+
+        public string  Document { get; set; }
+
         private IEnumerable<Address> _addresses;
         private IEnumerable<Order> _orders; 
-        public string Password { get; set; }
 
         public IEnumerable<Order> Orders
         {
