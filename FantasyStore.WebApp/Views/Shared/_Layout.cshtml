@@ -19,6 +19,16 @@
 <body>
     <div class="container">
         <h1 class="title">Fantasy Store</h1>
+        @if (!string.IsNullOrWhiteSpace(CurrentUser.Name))
+        {
+            <span style="color: cadetblue; margin-left: 850px;">Bem-vindo, <strong>@CurrentUser.Name</strong> </span>
+            <span style="color: darkslategrey; margin-left: 50px; font-weight: bold;"><a href="/Auth/LogOut">Sair</a></span>
+        }
+        else
+        {
+            <span style="color: cadetblue; margin-left: 1000px;">Olá, <strong>visitante</strong> </span>
+        }
+        
         <nav class="navbar navbar-default">
             <div class="container-fluid">
                 <div class="navbar-header">

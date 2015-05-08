@@ -18,7 +18,7 @@ namespace FantasyStore.WebApp.Models
         {
             get
             {
-                return FindFirst(ClaimTypes.Name).Value;
+                return FindFirst(ClaimTypes.Name) != null ? FindFirst(ClaimTypes.Name).Value : string.Empty;
             }
         }
 
@@ -26,7 +26,7 @@ namespace FantasyStore.WebApp.Models
         {
             get
             {
-                return FindFirst(ClaimTypes.StreetAddress).Value;
+                return FindFirst(ClaimTypes.StreetAddress) != null ? FindFirst(ClaimTypes.StreetAddress).Value : string.Empty;
             }
         }
     }
