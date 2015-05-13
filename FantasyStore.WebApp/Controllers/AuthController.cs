@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Security.Claims;
 using System.Threading.Tasks;
@@ -58,6 +59,11 @@ namespace FantasyStore.WebApp.Controllers
             GetAuthenticationManager().SignIn(identity);
         }
 
+        
+        public async Task<ActionResult> Register()
+        {
+            return View();
+        }
 
         [HttpPost]
         public async Task<ActionResult> Register(RegisterModel model)
@@ -66,10 +72,23 @@ namespace FantasyStore.WebApp.Controllers
             {
                 return View();
             }
+            DateTime? birthDate;
+            try
+            {
+                birthDate = DateTime.Parse(model.BirthDate, CultureInfo.GetCultureInfo("pt-BR"));
+            }
+            catch (Exception ex)
+            {
+                return Json(ex);
+            }
 
             var user = new User
             {
-                UserName = model.Email
+                FirstName = model.FirstName,
+                LastName = model.LastName,
+                UserName = model.Email,
+                Document = model.Document,
+                BirthDate = birthDate
             };
 
             var result = await _userManager.CreateAsync(user, model.Password);

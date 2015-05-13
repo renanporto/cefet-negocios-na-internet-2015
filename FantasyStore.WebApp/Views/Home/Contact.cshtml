@@ -2,21 +2,73 @@
     ViewBag.Title = "Login";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-
+@model FantasyStore.WebApp.ViewModels.ContactModel
+@Html.ValidationSummary(true)
 <div class="container">
     <div class="panel panel-default">
         <div class="panel-body">
             Contato
         </div>
         <div class="panel-footer">
-            Fantasy Store <br/><br/>
-        
-            Rua Sérvia, 329 <br/>
-            04763-070 – São Paulo – SP <br/>
-            BRASIL<br/>
+            @Html.Raw(@ViewBag.Confirmation)
+            @using (Html.BeginForm())
+            {
+                <div style="float:left; margin-right: 30px;">
+                    <label>Nome</label>
+                    @Html.TextBoxFor(m => m.FirstName, new { @class = "form-control", @style = "width:500px;", @placeholder = "Entre com o nome" })
+                    @Html.ValidationMessageFor(m => m.FirstName, null, new { @class = "validation-errors" })<br />
+                </div>
+                <div>
+                    <label>Sobrenome</label>
+                    @Html.TextBoxFor(m => m.LastName, new { @class = "form-control", @style = "width:500px;", @placeholder = "Entre com o sobrenome" })
+                    @Html.ValidationMessageFor(m => m.LastName, null, new { @class = "validation-errors" })<br />
+                </div>
+                <div style="float:left; margin-right: 30px;">
+                    <label>Telefone para contato</label>
+                    @Html.TextBoxFor(m => m.Phone, new { @class = "form-control", @style = "width:500px;", @placeholder = "Entre com a data de nascimento" })
+                    @Html.ValidationMessageFor(m => m.Phone, null, new { @class = "validation-errors" })<br />
+                </div>
+                <div>
+                    <label>Email</label>
+                    @Html.TextBoxFor(m => m.Email, new { @class = "form-control", @style = "width:500px;", @placeholder = "Entre com o email" })
+                    @Html.ValidationMessageFor(m => m.Email, null, new { @class = "validation-errors" })<br />
+                </div>
+                <div>
+                    <label>Tipo de solicitação</label>
+                    @Html.DropDownListFor(m => m.RequestType, new List<SelectListItem>{
+                        new SelectListItem
+                        {
+                            Text = "Dúvida", Value = "Dúvida"
+                        }, new SelectListItem
+                        {
+                            Text = "Reclamação", Value = "Reclamação"
+                        }, new SelectListItem
+                        {
+                            Text = "Sugestão", Value = "Sugestão"
+                        }}, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(m => m.RequestType, null, new { @class = "validation-errors" })<br />
+                </div>
+                <div>
+                    <label>Mensagem</label>
+                    @Html.TextAreaFor(m => m.Message, 10, 20, new { @class = "form-control", @placeholder = "Entre com o email" })
+                    @Html.ValidationMessageFor(m => m.Message, null, new { @class = "validation-errors" })<br />
+                </div>
+                <p>
+                    <button class="btn btn-primary" type="submit">Enviar</button>
+                </p>
+            }
+            
+            <br/><br/>
+            <strong>Endereço</strong>
+            <hr/>
+            Fantasy Store <br /><br />
 
-            Tel: +55 (11) 5696-6777 <br/>
-            FAX: +55 (11) 5523-1411<br/>
+            Rua Sérvia, 329 <br />
+            04763-070 – São Paulo – SP <br />
+            BRASIL<br />
+
+            Tel: +55 (11) 5696-6777 <br />
+            FAX: +55 (11) 5523-1411<br />
         </div>
     </div>
 </div>

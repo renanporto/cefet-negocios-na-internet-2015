@@ -4,6 +4,8 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using FantasyStore.Infrastructure;
+using FantasyStore.Services;
+using FantasyStore.WebApp.ViewModels;
 
 namespace FantasyStore.WebApp.Controllers
 {
@@ -34,12 +36,41 @@ namespace FantasyStore.WebApp.Controllers
         //    return View(productsByCategory);
         //}
 
+        private string DisplaySuccessMessage(string message)
+        {
+            return string.Format("<div class='alert alert-success'>{0}</div>", message);
+        }
 
         [HttpGet]
         public ActionResult About()
         {
             return View();
         }
+
+        [HttpPost]
+        public ActionResult Contact(ContactModel model)
+        {
+            if (!ModelState.IsValid)
+            {
+                return View();
+            }
+
+            const string messageTemplate = @"<p>Nome: {0}</p>
+                                    <p>Sobrenome: {1}</p>
+                                    <p>Telefone para contato: {2}</p>
+                                    <p>Email: {3}</p>
+                                    <p>Tipo de solicitação: {4}</p>
+                                    <p>Mensagem: {5}</p>";
+
+            var body = string.Format(messageTemplate, model.FirstName, model.LastName, model.Phone, model.Email,
+                model.RequestType, model.Message);
+
+            EmailService.Send(model.RequestType, body);
+            ViewBag.Confirmation = DisplaySuccessMessage("O email foi enviado com sucesso!");
+            ModelState.Clear();
+            return View();
+        }
+
 
         [HttpGet]
         public ActionResult Contact()
