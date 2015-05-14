@@ -10,7 +10,6 @@ namespace FantasyStore.Infrastructure
     public class UnitOfWork
     {
         private readonly FantasyStoreDbContext _context = new FantasyStoreDbContext();
-        private VariantRepository _variantRepository;
         private OrderRepository _orderRepository;
         private ProductRepository _productRepository;
         private AddressRepository _addressRepository;
@@ -21,14 +20,6 @@ namespace FantasyStore.Infrastructure
             get
             {
                 return _productRepository ?? (_productRepository = new ProductRepository(_context));
-            }
-        }
-
-        public VariantRepository Variants
-        {
-            get
-            {
-                return _variantRepository ?? (_variantRepository = new VariantRepository(_context));
             }
         }
 

@@ -13,21 +13,21 @@ namespace FantasyStore.Domain
             
         }
 
-        public WishList(int id, Guid code, ICollection<Variant> variants)
+        public WishList(int id, Guid code, ICollection<Product> products)
         {
             Id = id;
             Code = code;
-            Variants = variants;
+            Products = products;
         }
 
-        private ICollection<Variant> _variants; 
+        private ICollection<Product> _products; 
         public int Id { get; set; }
         public Guid Code { get; set; }
 
-        public ICollection<Variant> Variants
+        public ICollection<Product> Products
         {
-            get { return _variants ?? (_variants = new List<Variant>()); }
-            set { _variants = value; }
+            get { return _products ?? (_products = new List<Product>()); }
+            set { _products = value; }
         }
     }
 }

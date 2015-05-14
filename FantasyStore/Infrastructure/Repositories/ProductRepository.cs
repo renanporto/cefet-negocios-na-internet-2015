@@ -36,11 +36,6 @@ namespace FantasyStore.Infrastructure.Repositories
             return _context.Products.Where(p => p.Category.Equals(category));
         }
 
-        public IEnumerable<Product> GetByBrand(string brandName)
-        {
-            return _context.Products.Where(p => p.Brand.Equals(brandName));
-        }
-
         public void Insert(Product product)
         {
             _context.Products.Add(product);

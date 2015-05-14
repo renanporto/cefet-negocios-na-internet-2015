@@ -17,15 +17,12 @@ namespace FantasyStore.Infrastructure
         }
 
         public DbSet<Product> Products { get; set; }
-        public DbSet<Variant> Variants { get; set; }
         public DbSet<Order> Orders { get; set; }
         public DbSet<Item> Items { get; set; }
         public DbSet<Address> Addresses { get; set; }
         public DbSet<Client> Clients { get; set; }
         public DbSet<Category> Categories { get; set; }
         public DbSet<WishList> WishLists { get; set; }
-        public DbSet<Field> Fields { get; set; }
-        public DbSet<FieldValue> FieldValues { get; set; }
-        public DbSet<ProductFieldValue> ProductFieldValues { get; set; }
+        public DbSet<Image> Images { get; set; }
     }
 }

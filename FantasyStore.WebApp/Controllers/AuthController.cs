@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
 using FantasyStore.Domain;
+using FantasyStore.WebApp.Extensions;
 using FantasyStore.WebApp.ViewModels;
 using Microsoft.AspNet.Identity;
 using Microsoft.Owin.Security;
@@ -26,7 +27,15 @@ namespace FantasyStore.WebApp.Controllers
 
         public AuthController(UserManager<User> userManager)
         {
-            this._userManager = userManager;
+            _userManager = userManager;
+        }
+
+        private User CurrentUser
+        {
+            get
+            {
+                return _userManager.FindById(User.Identity.GetUserId());
+            }
         }
 
         protected override void Dispose(bool disposing)
@@ -63,6 +72,43 @@ namespace FantasyStore.WebApp.Controllers
         public async Task<ActionResult> Register()
         {
             return View();
+        }
+
+        private string DisplaySuccessMessage(string message)
+        {
+            return string.Format("<div class='alert alert-success'>{0}</div>", message);
+        }
+
+        [HttpPost]
+        public async Task<ActionResult> MyAccount(UpdateModel model)
+        {
+            if (!ModelState.IsValid)
+            {
+                return View();
+            }
+
+            CurrentUser.FirstName = model.FirstName;
+            CurrentUser.LastName = model.LastName;
+            CurrentUser.Document = model.Document;
+            CurrentUser.BirthDate = Convert.ToDateTime(model.BirthDate, CultureInfo.GetCultureInfo("pt-BR"));
+            CurrentUser.UserName = model.Email;
+
+            await _userManager.UpdateAsync(CurrentUser);
+            ViewBag.Confirmation = DisplaySuccessMessage("Dados atualizados com sucesso");
+            ModelState.Clear();
+            return View();
+        }
+
+        [HttpGet]
+        public ActionResult MyAccount()
+        {
+            if (CurrentUser == null)
+            {
+                return Redirect("/Home");
+            }
+
+            var model = CurrentUser.ToViewModel();
+            return View(model);
         }
 
         [HttpPost]

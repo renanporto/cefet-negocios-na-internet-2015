@@ -16,34 +16,34 @@ namespace FantasyStore.Infrastructure.Repositories
             _context = context;
         }
 
-        public Variant Get(int id)
+        public Product Get(int id)
         {
-            return _context.Variants.Find(id);
+            return _context.Products.Find(id);
         }
 
-        public IEnumerable<Variant> GetAll()
+        public IEnumerable<Product> GetAll()
         {
-            return _context.Variants;
+            return _context.Products;
         }
 
-        public IEnumerable<Variant> GetByName(string name)
+        public IEnumerable<Product> GetByName(string name)
         {
-            return _context.Variants.Where(p => p.Name.Contains(name));
+            return _context.Products.Where(p => p.Name.Contains(name));
         }
 
-        public void Insert(Variant variant)
+        public void Insert(Product variant)
         {
-            _context.Variants.Add(variant);
+            _context.Products.Add(variant);
         }
 
-        public void Delete(Variant variant)
+        public void Delete(Product variant)
         {
-            _context.Variants.Remove(variant);
+            _context.Products.Remove(variant);
         }
 
-        public void Update(Variant variant)
+        public void Update(Product variant)
         {
-            _context.Variants.Attach(variant);
+            _context.Products.Attach(variant);
             _context.Entry(variant).State = EntityState.Modified; ;
         }
     }

@@ -8,30 +8,41 @@ namespace FantasyStore.Domain
 {
     public class Product
     {
-        private ICollection<Variant> _variants;
         public Product()
         {
 
         }
 
-        public Product(int id, string name, string brand, Category category, ICollection<Variant> variants)
+        public Product(int id, string name, decimal? price, string ean, int amountInStock)
         {
             Id = id;
             Name = name;
-            Brand = brand;
-            Category = category;
-            Variants = variants;
+            Price = price;
+            Ean = ean;
+            AmountInStock = amountInStock;
         }
+
+        private ICollection<Image> _images; 
+        private ICollection<WishList> _wishLists; 
 
         public int Id { get; set; }
         public string Name { get; set; }
-        public string Brand { get; set; }
+        public decimal? Price { get; set; }
+        public string Ean { get; set; }
         public Category Category { get; set; }
+        public int AmountInStock { get; set; }
 
-        public ICollection<Variant> Variants 
+        public ICollection<WishList> WishLists
         {
-            get { return _variants ?? (_variants = new List<Variant>()); }
-            set { _variants = value; }
+            get { return _wishLists ?? (_wishLists = new List<WishList>()); }
+            set { _wishLists = value; }
         }
+
+        public ICollection<Image> Images
+        {
+            get { return _images ?? (_images = new List<Image>()); }
+            set { _images = value; }
+        }
+
     }
 }

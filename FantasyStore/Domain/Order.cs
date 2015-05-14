@@ -28,7 +28,7 @@ namespace FantasyStore.Domain
     {
         public int Id { get; set; }
         public int Amount { get; set; }
-        public Variant Variant { get; set; }
+        public Product Product { get; set; }
         public Order Order { get; set; }
     }
 }
