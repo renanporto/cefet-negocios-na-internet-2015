@@ -12,5 +12,7 @@ namespace FantasyStore.WebApp.ViewModels
         public string PriceTo { get; set; }
         public string ImageUrl { get; set; }
         public string ImageName { get; set; }
+        public string ProductLink { get; set; }
+        public string AddToCartLink { get; set; }
     }
 }

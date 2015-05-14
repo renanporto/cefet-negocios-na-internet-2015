@@ -25,14 +25,18 @@ namespace FantasyStore.WebApp.Extensions
 
         public static ProductViewModel ToProductViewModel(this Product product)
         {
-            var priceFrom = product.Price + 20;
+            var priceFrom = product.Price + 40;
+            var productLink = string.Format("/Products/{0}", product.Id);
+            var addToCartLink = string.Format("/Checkout/Add/{0}", product.Id);
             return new ProductViewModel
             {
                 Name = product.Name,
                 ImageUrl = product.Images.First().Url,
                 ImageName = product.Images.First().Name,
-                PriceFrom = priceFrom.ToString(),
-                PriceTo = product.Price.ToString()
+                PriceFrom = priceFrom.Value.ToString().Replace(".", ","),
+                PriceTo = product.Price.ToString().Replace(".", ","),
+                ProductLink = productLink,
+                AddToCartLink = addToCartLink
             };
         }
     }

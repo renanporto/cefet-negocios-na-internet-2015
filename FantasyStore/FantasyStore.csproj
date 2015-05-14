@@ -70,6 +70,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Domain\Address.cs" />
+    <Compile Include="Domain\Cart.cs" />
     <Compile Include="Domain\Category.cs" />
     <Compile Include="Domain\Client.cs" />
     <Compile Include="Domain\Collection.cs" />
@@ -92,6 +93,10 @@
     <Compile Include="Migrations\201505140433368_image222232.Designer.cs">
       <DependentUpon>201505140433368_image222232.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201505142346054_aaa.cs" />
+    <Compile Include="Migrations\201505142346054_aaa.Designer.cs">
+      <DependentUpon>201505142346054_aaa.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\EmailService.cs" />
@@ -106,6 +111,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201505140433368_image222232.resx">
       <DependentUpon>201505140433368_image222232.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201505142346054_aaa.resx">
+      <DependentUpon>201505142346054_aaa.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

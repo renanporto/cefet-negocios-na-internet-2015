@@ -26,5 +26,6 @@ namespace FantasyStore.Infrastructure
         public DbSet<WishList> WishLists { get; set; }
         public DbSet<Image> Images { get; set; }
         public DbSet<Collection> Collections { get; set; }
+        public DbSet<Cart> Carts { get; set; }
     }
 }

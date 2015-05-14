@@ -2,7 +2,6 @@
     ViewBag.Title = "MyAccount";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-@model FantasyStore.WebApp.ViewModels.RegisterModel
 @Html.ValidationSummary(true)
 <div class="container">
     <div class="row" style="min-height: 800px;">
@@ -12,28 +11,28 @@
             </div>
             <div class="panel-footer">
                 @Html.Raw(@ViewBag.Confirmation)
-                @using (Html.BeginForm())
-                {
+                <form method="POST">
+
                     <label>Nome</label>
-                    @Html.TextBoxFor(m => m.FirstName, new { @class = "form-control", @style = "width:500px;" })
-                    @Html.ValidationMessageFor(m => m.FirstName, null, new { @class = "validation-errors" })<br />
+                    @Html.TextBox("firstName", (string)ViewBag.FirstName, new { @class = "form-control", @style = "width:500px;" })
+                    @*@Html.ValidationMessageFor(m => m.FirstName, null, new { @class = "validation-errors" })*@<br />
                     <label>Sobrenome</label>
-                    @Html.TextBoxFor(m => m.LastName, new { @class = "form-control", @style = "width:500px;" })
-                    @Html.ValidationMessageFor(m => m.LastName, null, new { @class = "validation-errors" })<br />
+                    @Html.TextBox("lastName", (string)ViewBag.LastName, new { @class = "form-control", @style = "width:500px;" })
+                    @*@Html.ValidationMessageFor(m => m.LastName, null, new { @class = "validation-errors" })*@<br />
                     <label>CPF</label>
-                    @Html.TextBoxFor(m => m.Document, new { @class = "form-control", @style = "width:500px;" })
-                    @Html.ValidationMessageFor(m => m.Document, null, new { @class = "validation-errors" })<br />
+                    @Html.TextBox("document", (string)ViewBag.Document, new { @class = "form-control", @style = "width:500px;" })
+                    @*@Html.ValidationMessageFor(m => m.Document, null, new { @class = "validation-errors" })*@<br />
                     <label>Data de nascimento</label>
-                    @Html.TextBoxFor(m => m.BirthDate, new { @class = "form-control", @style = "width:500px;"})
-                    @Html.ValidationMessageFor(m => m.BirthDate, null, new { @class = "validation-errors" })<br />
+                    @Html.TextBox("birthDate", (string)ViewBag.BirthDate, new { @class = "form-control", @style = "width:500px;" })
+                    @*@Html.ValidationMessageFor(m => m.BirthDate, null, new { @class = "validation-errors" })*@<br />
                     <label>Email</label>
-                    @Html.TextBoxFor(m => m.Email, new { @class = "form-control", @style = "width:500px;" })
-                    @Html.ValidationMessageFor(m => m.Email, null, new { @class = "validation-errors" })<br />
-                    <a href="/Auth/ChangePassword">Mudar minha senha</a><br/><br />
+                    @Html.TextBox("email", (string)ViewBag.Email, new { @class = "form-control", @style = "width:500px;" })
+                    @*@Html.ValidationMessageFor(m => m.Email, null, new { @class = "validation-errors" })*@<br />
+                    <a href="/Auth/ChangePassword">Mudar minha senha</a><br /><br />
                     <p>
                         <button class="btn btn-primary" type="submit">Atualizar</button>
                     </p>
-                }
+                </form>
 
             </div>
 

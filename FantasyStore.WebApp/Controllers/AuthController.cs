@@ -50,14 +50,9 @@ namespace FantasyStore.WebApp.Controllers
 
         //
         // GET: /Auth/
-        public ActionResult LogIn(string returnUrl)
+        public ActionResult LogIn()
         {
-            var model = new LogInModel
-            {
-                ReturnUrl = returnUrl
-            };
-
-            return View(model);
+            return View();
         }
 
         private async Task SignIn(User user)
@@ -108,7 +103,14 @@ namespace FantasyStore.WebApp.Controllers
             }
 
             var model = CurrentUser.ToViewModel();
-            return View(model);
+            
+            ViewBag.FirstName = model.FirstName;
+            ViewBag.LastName = model.LastName;
+            ViewBag.Document = model.Document;
+            ViewBag.Email = model.Email;
+            ViewBag.BirthDate = model.BirthDate;
+           
+            return View();
         }
 
         [HttpPost]
