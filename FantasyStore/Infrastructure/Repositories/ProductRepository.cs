@@ -18,7 +18,7 @@ namespace FantasyStore.Infrastructure.Repositories
 
         public Product Get(int id)
         {
-            return _context.Products.Find(id);
+            return _context.Products.Include(p => p.Images).FirstOrDefault(p => p.Id == id);
         }
 
         public IEnumerable<Product> GetAll()
@@ -28,7 +28,7 @@ namespace FantasyStore.Infrastructure.Repositories
 
         public IEnumerable<Product> GetByName(string name)
         {
-            return _context.Products.Where(p => p.Name.Contains(name));
+            return _context.Products.Include(p=>p.Images).Where(p => p.Name.Contains(name));
         }
 
         public IEnumerable<Product> GetByCollection(int collectionId)

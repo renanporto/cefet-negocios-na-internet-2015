@@ -147,6 +147,7 @@
     <Content Include="Content\Images\superman-adulto.jpg" />
     <Content Include="Content\Images\xerife-infantil.jpg" />
     <Content Include="css\style.css" />
+    <Content Include="Js\search.js" />
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
@@ -161,7 +162,7 @@
     <Content Include="Views\Home\_Section1.cshtml" />
     <Content Include="Views\Home\_Section2.cshtml" />
     <Content Include="Views\Home\_Section3.cshtml" />
-    <Content Include="Views\Search\Index.cshtml" />
+    <Content Include="Views\Home\Search.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -208,7 +209,6 @@
     <Compile Include="Controllers\AppController.cs" />
     <Compile Include="Controllers\AuthController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
-    <Compile Include="Controllers\SearchController.cs" />
     <Compile Include="Extensions\ViewModelExtensions.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>

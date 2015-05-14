@@ -52,7 +52,7 @@
                         <li><a href="/Home/About">Empresa </a></li>
                         <li><a href="/Home/Contact">Contato </a></li>
                     </ul>
-                    @using (Html.BeginForm("Index", "Search", FormMethod.Post, new{ @class="navbar-form navbar-left", @role="search"}))
+                    @using (Html.BeginForm("Search", "Home", FormMethod.Post, new { @class="navbar-form navbar-left", @role="search"}))
                     {
                         <div class="col-lg-6">
                             <div style="float:left; ">
