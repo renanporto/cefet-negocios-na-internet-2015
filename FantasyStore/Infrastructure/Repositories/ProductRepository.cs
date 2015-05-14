@@ -60,5 +60,10 @@ namespace FantasyStore.Infrastructure.Repositories
             _context.Products.Attach(product);
             _context.Entry(product).State = EntityState.Modified;;
         }
+
+        public IEnumerable<Product> GetByPriceRange(int price1, int price2)
+        {
+            return _context.Products.Include(c => c.Images).Where(p => p.Price >= price1 && p.Price <= price2);
+        }
     }
 }

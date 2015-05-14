@@ -19,24 +19,7 @@ namespace FantasyStore.WebApp.Controllers
         {
             return View();
         }
-
-
-        //public ActionResult Index(string term)
-        //{
-        //    var productsByCategory = unitOfWork.Products.GetByCategory(term);
-        //    if (!productsByCategory.Any())
-        //    {
-        //        var productsByBrand = unitOfWork.Products.GetByBrand(term);
-        //        if (!productsByBrand.Any())
-        //        {
-        //            //Retornar uma página amigável com esse conteúdo
-        //            return Content(string.Format("Não há produtos na categoria ou marca {0}", term));
-        //        }
-        //        return View(productsByBrand);
-        //    }
-        //    return View(productsByCategory);
-        //}
-
+        
         private string DisplaySuccessMessage(string message)
         {
             return string.Format("<div class='alert alert-success'>{0}</div>", message);

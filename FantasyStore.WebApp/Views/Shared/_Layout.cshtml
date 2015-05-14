@@ -12,6 +12,7 @@
             font-size: 40pt;
         }
     </style>
+    @model FantasyStore.WebApp.ViewModels.SearchViewModel
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
     <title>Página inicial - Fantasy Store</title>
@@ -51,10 +52,11 @@
                         <li><a href="/Home/About">Empresa </a></li>
                         <li><a href="/Home/Contact">Contato </a></li>
                     </ul>
-                    <form class="navbar-form navbar-left" role="search">
+                    @using (Html.BeginForm("Index", "Search", FormMethod.Post, new{ @class="navbar-form navbar-left", @role="search"}))
+                    {
                         <div class="col-lg-6">
                             <div style="float:left; ">
-                                @Html.DropDownList("ddlCriteria", new List<SelectListItem>
+                                @Html.DropDownListFor(x=>x.Criteria, new List<SelectListItem>
                             {
                                 new SelectListItem
                                 {
@@ -68,16 +70,19 @@
                                 {
                                     Text = "Faixa de preço (Ex: 30 - 100)", Value = "3"
                                 }
-                            }, new { @class = "form-control", @style="width:200px;" })
+                            }, new { @class = "form-control", @style = "width:200px;" })
                             </div>
                             <div class="input-group" style="margin-left:10px; position:absolute;">
-                                <input type="text" class="form-control" style="width: 220px;" placeholder="Pesquisar...">
+                                @Html.TextBoxFor(m => m.Term, new { @class = "form-control", @style = "width: 220px;", @placeholder = "Pesquisar..." })
                                 <span class="input-group-btn">
-                                    <button class="btn btn-default" type="button">Buscar</button>
+                                    <button class="btn btn-default" type="submit">Buscar</button>
                                 </span>
 
                             </div>
                         </div>
+                    }
+                    <form class="navbar-form navbar-left" role="search">
+                        
                     </form>
                     <ul class="nav navbar-nav navbar-right">
                         <li class="dropdown">
