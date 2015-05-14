@@ -38,6 +38,11 @@ namespace FantasyStore.Infrastructure.Repositories
                                        .First(c => c.Id == collectionId).Products;
         }
 
+        public IEnumerable<Product> GetByCategoryId(int id)
+        {
+            return _context.Products.Include(p => p.Images).Include(p => p.Category).Where(p => p.Category.Id == id);
+        }
+
         public IEnumerable<Product> GetByCategory(string category)
         {
             return _context.Products.Include(p => p.Images)

@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text.RegularExpressions;
 using System.Web;
 using System.Web.Mvc;
+using FantasyStore.Domain;
 using FantasyStore.Infrastructure;
 using FantasyStore.Services;
 using FantasyStore.WebApp.Extensions;
@@ -182,5 +183,14 @@ namespace FantasyStore.WebApp.Controllers
             return View();
         }
 
+        [HttpGet]
+        public ActionResult Category(int id)
+        {
+            var products = unitOfWork.Products.GetByCategoryId(id);
+            ViewBag.CategoryName = products.Select(p => p.Category.Name).First();
+            var result = products.Select(p => p.ToProductViewModel());
+            ViewBag.Products = result;
+            return View();
+        }
     }
 }

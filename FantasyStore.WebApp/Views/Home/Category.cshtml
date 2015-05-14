@@ -1,0 +1,43 @@
+﻿@{
+    ViewBag.Title = "Category";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<style>
+    img {
+        width: 220px;
+        height: 220px;
+    }
+</style>
+@model IEnumerable<FantasyStore.WebApp.ViewModels.ProductViewModel>
+
+<div class="row" style="min-height: 300px; width: 100%; margin: auto;">
+    <div style="height: 100%; width: 100%;">
+        <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+        <span class="section-title">@ViewBag.CategoryName</span>
+    </div>
+    @foreach (var product in @ViewBag.Products)
+    {
+        <div class="col-md-3 product-wrapper">
+            <a href="#">
+                <img src="@product.ImageUrl" alt="@product.ImageName" />
+            </a>
+            <div class="product-info">
+                <p>
+                    <a href="#"><span class="product-name">@product.Name</span></a>
+                    <a href="#"><span class="glyphicon glyphicon-plus" aria-hidden="true" style="margin-left: 6px;"></span></a>
+                    <br />
+                    <span class="price-from">De: R$ @product.PriceFrom</span>
+                    <br />
+                    <span class="price-to">Por: R$ @product.PriceTo</span>
+                    <span style="margin-left: 20px;">
+                        <button class="btn btn-primary btn-xs">
+                            <span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span><span style="margin-left: 5px;">Comprar</span>
+                        </button>
+                    </span>
+                    <br />
+                </p>
+            </div>
+        </div>
+    }
+</div>
