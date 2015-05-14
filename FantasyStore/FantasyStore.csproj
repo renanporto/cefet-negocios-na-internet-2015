@@ -82,7 +82,6 @@
     <Compile Include="Infrastructure\Repositories\ClientRepository.cs" />
     <Compile Include="Infrastructure\Repositories\OrderRepository.cs" />
     <Compile Include="Infrastructure\Repositories\ProductRepository.cs" />
-    <Compile Include="Infrastructure\Repositories\VariantRepository.cs" />
     <Compile Include="Infrastructure\UnitOfWork.cs" />
     <Compile Include="Migrations\201505081915200_user5.cs" />
     <Compile Include="Migrations\201505081915200_user5.Designer.cs">
@@ -103,6 +102,10 @@
     <Compile Include="Migrations\201505140142439_image2355.cs" />
     <Compile Include="Migrations\201505140142439_image2355.Designer.cs">
       <DependentUpon>201505140142439_image2355.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201505140201114_image2355d.cs" />
+    <Compile Include="Migrations\201505140201114_image2355d.Designer.cs">
+      <DependentUpon>201505140201114_image2355d.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -127,6 +130,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201505140142439_image2355.resx">
       <DependentUpon>201505140142439_image2355.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201505140201114_image2355d.resx">
+      <DependentUpon>201505140201114_image2355d.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

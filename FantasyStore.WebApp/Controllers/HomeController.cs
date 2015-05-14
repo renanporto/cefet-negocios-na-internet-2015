@@ -71,6 +71,23 @@ namespace FantasyStore.WebApp.Controllers
             return View();
         }
 
+        [HttpGet]
+        public PartialViewResult Section1()
+        {
+            return PartialView();
+        }
+
+        [HttpGet]
+        public PartialViewResult Section2()
+        {
+            return PartialView();
+        }
+
+        [HttpGet]
+        public PartialViewResult Section3()
+        {
+            return PartialView();
+        }
 
         [HttpGet]
         public ActionResult Contact()
