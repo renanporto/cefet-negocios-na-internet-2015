@@ -31,9 +31,18 @@ namespace FantasyStore.Infrastructure.Repositories
             return _context.Products.Where(p => p.Name.Contains(name));
         }
 
+        public IEnumerable<Product> GetByCollection(int collectionId)
+        {
+            return _context.Collections.Include(c => c.Products)
+                                       .Include(c=> c.Products.Select(p => p.Images))
+                                       .First(c => c.Id == collectionId).Products;
+        }
+
         public IEnumerable<Product> GetByCategory(string category)
         {
-            return _context.Products.Where(p => p.Category.Equals(category));
+            return _context.Products.Include(p => p.Images)
+                                    .Include(p => p.Category)
+                                    .Where(p => p.Category.Name.Equals(category));
         }
 
         public void Insert(Product product)

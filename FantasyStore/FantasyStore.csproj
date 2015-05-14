@@ -72,6 +72,7 @@
     <Compile Include="Domain\Address.cs" />
     <Compile Include="Domain\Category.cs" />
     <Compile Include="Domain\Client.cs" />
+    <Compile Include="Domain\Collection.cs" />
     <Compile Include="Domain\Image.cs" />
     <Compile Include="Domain\Order.cs" />
     <Compile Include="Domain\User.cs" />
@@ -83,29 +84,13 @@
     <Compile Include="Infrastructure\Repositories\OrderRepository.cs" />
     <Compile Include="Infrastructure\Repositories\ProductRepository.cs" />
     <Compile Include="Infrastructure\UnitOfWork.cs" />
-    <Compile Include="Migrations\201505081915200_user5.cs" />
-    <Compile Include="Migrations\201505081915200_user5.Designer.cs">
-      <DependentUpon>201505081915200_user5.cs</DependentUpon>
+    <Compile Include="Migrations\201505140352166_image2222.cs" />
+    <Compile Include="Migrations\201505140352166_image2222.Designer.cs">
+      <DependentUpon>201505140352166_image2222.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201505081918397_user55.cs" />
-    <Compile Include="Migrations\201505081918397_user55.Designer.cs">
-      <DependentUpon>201505081918397_user55.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201505140112554_image.cs" />
-    <Compile Include="Migrations\201505140112554_image.Designer.cs">
-      <DependentUpon>201505140112554_image.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201505140133495_image1.cs" />
-    <Compile Include="Migrations\201505140133495_image1.Designer.cs">
-      <DependentUpon>201505140133495_image1.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201505140142439_image2355.cs" />
-    <Compile Include="Migrations\201505140142439_image2355.Designer.cs">
-      <DependentUpon>201505140142439_image2355.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201505140201114_image2355d.cs" />
-    <Compile Include="Migrations\201505140201114_image2355d.Designer.cs">
-      <DependentUpon>201505140201114_image2355d.cs</DependentUpon>
+    <Compile Include="Migrations\201505140433368_image222232.cs" />
+    <Compile Include="Migrations\201505140433368_image222232.Designer.cs">
+      <DependentUpon>201505140433368_image222232.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -116,23 +101,11 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201505081915200_user5.resx">
-      <DependentUpon>201505081915200_user5.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201505140352166_image2222.resx">
+      <DependentUpon>201505140352166_image2222.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201505081918397_user55.resx">
-      <DependentUpon>201505081918397_user55.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201505140112554_image.resx">
-      <DependentUpon>201505140112554_image.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201505140133495_image1.resx">
-      <DependentUpon>201505140133495_image1.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201505140142439_image2355.resx">
-      <DependentUpon>201505140142439_image2355.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201505140201114_image2355d.resx">
-      <DependentUpon>201505140201114_image2355d.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201505140433368_image222232.resx">
+      <DependentUpon>201505140433368_image222232.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

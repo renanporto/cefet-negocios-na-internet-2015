@@ -22,5 +22,18 @@ namespace FantasyStore.WebApp.Extensions
                 Email = user.UserName
             };
         }
+
+        public static ProductViewModel ToProductViewModel(this Product product)
+        {
+            var priceFrom = product.Price + 20;
+            return new ProductViewModel
+            {
+                Name = product.Name,
+                ImageUrl = product.Images.First().Url,
+                ImageName = product.Images.First().Name,
+                PriceFrom = priceFrom.ToString(),
+                PriceTo = product.Price.ToString()
+            };
+        }
     }
 }

@@ -3,15 +3,14 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link type="text/css" href="/css/style.css" rel="stylesheet"/>
+    <link type="text/css" href="/css/style.css" rel="stylesheet" />
     <style>
-         .title {
-        color: orangered;
-        font-family: Impact;
-        font-weight: bolder;
-        font-size: 40pt;
-    }
-
+        .title {
+            color: orangered;
+            font-family: Impact;
+            font-weight: bolder;
+            font-size: 40pt;
+        }
     </style>
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
@@ -28,9 +27,10 @@
         else
         {
             <span style="color: cadetblue; margin-left: 900px;">Olá, <strong>visitante</strong> </span>
-            <span style="color:midnightblue; margin-left: 50px;"><strong><a href="/Auth/Register">Cadastrar</a></strong> </span>
+            <span style="color:midnightblue; margin-left: 10px;"><strong><a href="/Auth/Login">Login</a></strong> </span>
+            <span style="color:midnightblue; margin-left: 10px;"><strong><a href="/Auth/Register">Registrar</a></strong> </span>
         }
-        
+
         <nav class="navbar navbar-default">
             <div class="container-fluid">
                 <div class="navbar-header">
@@ -53,16 +53,32 @@
                     </ul>
                     <form class="navbar-form navbar-left" role="search">
                         <div class="col-lg-6">
-                            <div class="input-group" style="margin-left:30px;">
-                                <input type="text" class="form-control" style="width: 500px;" placeholder="Busque por nome, código ou faixa de preço do produto">
+                            <div style="float:left; ">
+                                @Html.DropDownList("ddlCriteria", new List<SelectListItem>
+                            {
+                                new SelectListItem
+                                {
+                                    Text = "Código do produto", Value = "1"
+                                },
+                                new SelectListItem
+                                {
+                                    Text = "Nome do produto", Value = "2"
+                                },
+                                new SelectListItem
+                                {
+                                    Text = "Faixa de preço (Ex: 30 - 100)", Value = "3"
+                                }
+                            }, new { @class = "form-control", @style="width:200px;" })
+                            </div>
+                            <div class="input-group" style="margin-left:10px; position:absolute;">
+                                <input type="text" class="form-control" style="width: 220px;" placeholder="Pesquisar...">
                                 <span class="input-group-btn">
                                     <button class="btn btn-default" type="button">Buscar</button>
                                 </span>
+
                             </div>
                         </div>
                     </form>
-                    <a href="/Auth/Login"><p class="navbar-text" style="margin-left: 60px;">Login</p></a>
-
                     <ul class="nav navbar-nav navbar-right">
                         <li class="dropdown">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Minhas informações <span class="caret"></span></a>

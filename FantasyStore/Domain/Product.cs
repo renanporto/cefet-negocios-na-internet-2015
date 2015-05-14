@@ -23,7 +23,8 @@ namespace FantasyStore.Domain
         }
 
         private ICollection<Image> _images; 
-        private ICollection<WishList> _wishLists; 
+        private ICollection<WishList> _wishLists;
+        private ICollection<Collection> _collections;
 
         public int Id { get; set; }
         public string Name { get; set; }
@@ -36,6 +37,12 @@ namespace FantasyStore.Domain
         {
             get { return _wishLists ?? (_wishLists = new List<WishList>()); }
             set { _wishLists = value; }
+        }
+
+        public ICollection<Collection> Collections
+        {
+            get { return _collections ?? (_collections = new List<Collection>()); }
+            set { _collections = value; }
         }
 
         public ICollection<Image> Images

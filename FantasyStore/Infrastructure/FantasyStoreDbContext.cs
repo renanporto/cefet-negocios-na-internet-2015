@@ -14,6 +14,7 @@ namespace FantasyStore.Infrastructure
         public FantasyStoreDbContext()
             : base("name=FantasyStoreStr")
         {
+            Configuration.LazyLoadingEnabled = false;
         }
 
         public DbSet<Product> Products { get; set; }
@@ -24,5 +25,6 @@ namespace FantasyStore.Infrastructure
         public DbSet<Category> Categories { get; set; }
         public DbSet<WishList> WishLists { get; set; }
         public DbSet<Image> Images { get; set; }
+        public DbSet<Collection> Collections { get; set; }
     }
 }

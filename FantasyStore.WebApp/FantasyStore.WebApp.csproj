@@ -126,18 +126,26 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Content\Images\batman-infantil.jpg" />
-    <Content Include="Content\Images\bruxa.jpg" />
-    <Content Include="Content\Images\esqueletoadulto.jpg" />
-    <Content Include="Content\Images\fredkruger-adulto.jpg" />
-    <Content Include="Content\Images\lanterna-verde.jpg" />
-    <Content Include="Content\Images\marinheiro.jpg" />
-    <Content Include="Content\Images\policial-feminina.jpg" />
-    <Content Include="Content\Images\power-infantil.jpg" />
-    <Content Include="Content\Images\superman-infantil.jpg" />
-    <Content Include="Content\Images\theflash.jpg" />
-    <Content Include="Content\Images\princesa-rubi.jpg" />
-    <Content Include="Content\Images\vampira.jpg" />
+    <Content Include="Content\Images\arco-e-fecha.jpg" />
+    <Content Include="Content\Images\baleiro-caveira.jpg" />
+    <Content Include="Content\Images\bruxa-teen.jpg" />
+    <Content Include="Content\Images\cupcake-teen.jpg" />
+    <Content Include="Content\Images\dracula-bebe.jpg" />
+    <Content Include="Content\Images\enfermeira-adulta.jpg" />
+    <Content Include="Content\Images\flash-bebe.jpg" />
+    <Content Include="Content\Images\gangsta-adulta.jpg" />
+    <Content Include="Content\Images\japao-infantil.jpg" />
+    <Content Include="Content\Images\leao-bebe.jpg" />
+    <Content Include="Content\Images\machado-assombrado.jpg" />
+    <Content Include="Content\Images\oncinha-teen.jpg" />
+    <Content Include="Content\Images\palhaço-bebe.jpg" />
+    <Content Include="Content\Images\pedrita-teen.jpg" />
+    <Content Include="Content\Images\peruca-cacheada.jpg" />
+    <Content Include="Content\Images\policial-adulta.jpg" />
+    <Content Include="Content\Images\policial-infantil.jpg" />
+    <Content Include="Content\Images\robin-infantil.jpg" />
+    <Content Include="Content\Images\superman-adulto.jpg" />
+    <Content Include="Content\Images\xerife-infantil.jpg" />
     <Content Include="css\style.css" />
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\_ViewStart.cshtml" />
@@ -150,6 +158,9 @@
     <Content Include="Views\Auth\LogIn.cshtml" />
     <Content Include="Views\Auth\Register.cshtml" />
     <Content Include="Views\Auth\MyAccount.cshtml" />
+    <Content Include="Views\Home\_Section1.cshtml" />
+    <Content Include="Views\Home\_Section2.cshtml" />
+    <Content Include="Views\Home\_Section3.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -205,6 +216,7 @@
     <Compile Include="Startup.cs" />
     <Compile Include="ViewModels\ContactModel.cs" />
     <Compile Include="ViewModels\LogInModel.cs" />
+    <Compile Include="ViewModels\ProductViewModel.cs" />
     <Compile Include="ViewModels\UpdateModel.cs" />
     <Compile Include="ViewModels\RegisterModel.cs" />
   </ItemGroup>

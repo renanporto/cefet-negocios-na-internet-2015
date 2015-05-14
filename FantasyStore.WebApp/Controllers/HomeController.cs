@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.Mvc;
 using FantasyStore.Infrastructure;
 using FantasyStore.Services;
+using FantasyStore.WebApp.Extensions;
 using FantasyStore.WebApp.ViewModels;
 
 namespace FantasyStore.WebApp.Controllers
@@ -72,21 +73,27 @@ namespace FantasyStore.WebApp.Controllers
         }
 
         [HttpGet]
-        public PartialViewResult Section1()
+        public PartialViewResult _Section1()
         {
-            return PartialView();
+            var products = unitOfWork.Products.GetByCollection(1);
+            var model = products.Select(p => p.ToProductViewModel()).ToList();
+            return PartialView(model);
         }
 
         [HttpGet]
-        public PartialViewResult Section2()
+        public PartialViewResult _Section2()
         {
-            return PartialView();
+            var products = unitOfWork.Products.GetByCollection(2);
+            var model = products.Select(p => p.ToProductViewModel()).ToList();
+            return PartialView(model);
         }
 
         [HttpGet]
-        public PartialViewResult Section3()
+        public PartialViewResult _Section3()
         {
-            return PartialView();
+            var products = unitOfWork.Products.GetByCategory("Infantil");
+            var model = products.Select(p => p.ToProductViewModel()).ToList();
+            return PartialView(model);
         }
 
         [HttpGet]
