@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Security.Principal;
 using System.Text;
@@ -18,7 +19,6 @@ namespace FantasyStore.Domain
         public string FirstName { get; set; }
         public string LastName { get; set; }
         public DateTime? BirthDate { get; set; }
-
         public string  Document { get; set; }
 
         private IEnumerable<Address> _addresses;

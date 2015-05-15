@@ -147,7 +147,7 @@
     <Content Include="Content\Images\superman-adulto.jpg" />
     <Content Include="Content\Images\xerife-infantil.jpg" />
     <Content Include="css\style.css" />
-    <Content Include="Js\search.js" />
+    <Content Include="Js\buy-button.js" />
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
@@ -209,6 +209,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\AppController.cs" />
     <Compile Include="Controllers\AuthController.cs" />
+    <Compile Include="Controllers\CheckoutController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Extensions\ViewModelExtensions.cs" />
     <Compile Include="Global.asax.cs">
@@ -228,6 +229,7 @@
     <Folder Include="App_Data\" />
     <Folder Include="Pages\" />
     <Folder Include="Views\App\" />
+    <Folder Include="Views\Checkout\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\FantasyStore\FantasyStore.csproj">

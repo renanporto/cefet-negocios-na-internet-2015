@@ -7,6 +7,7 @@ namespace FantasyStore.WebApp.ViewModels
 {
     public class ProductViewModel
     {
+        public int Id { get; set; }
         public string Name { get; set; }
         public string PriceFrom { get; set; }
         public string PriceTo { get; set; }

@@ -14,6 +14,24 @@ namespace FantasyStore.Infrastructure
         private ProductRepository _productRepository;
         private AddressRepository _addressRepository;
         private ClientRepository _clientRepository;
+        private CartRepository _cartRepository;
+        private ItemRepository _items;
+
+        public ItemRepository Items
+        {
+            get
+            {
+                return _items ?? (_items = new ItemRepository(_context));
+            }
+        }
+
+        public CartRepository Carts
+        {
+            get
+            {
+                return _cartRepository ?? (_cartRepository = new CartRepository(_context));
+            }
+        }
 
         public ProductRepository Products
         {
@@ -45,6 +63,11 @@ namespace FantasyStore.Infrastructure
             {
                 return _clientRepository ?? (_clientRepository = new ClientRepository(_context));
             }
+        }
+
+        public void Commit()
+        {
+            _context.SaveChanges();
         }
 
     }
