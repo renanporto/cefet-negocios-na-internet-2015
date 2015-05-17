@@ -21,6 +21,9 @@ namespace FantasyStore.Infrastructure.Repositories
         }
 
 
-
+        public bool HasPayment(Cart cart)
+        {
+            return _context.Payments.Any(p => p.Cart.Id == cart.Id);
+        }
     }
 }

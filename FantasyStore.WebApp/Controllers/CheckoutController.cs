@@ -50,9 +50,9 @@ namespace FantasyStore.WebApp.Controllers
         public ActionResult Cart()
         {
             var session = Session["CartId"];
+            var user = _unitOfWork.Users.Get(User.Identity.GetUserId());
             if (session == null)
-            {
-                var user = _unitOfWork.Users.Get(User.Identity.GetUserId());
+            {  
                 if (user == null)
                 {
                     ViewBag.Flag = 1;
@@ -74,7 +74,14 @@ namespace FantasyStore.WebApp.Controllers
             else
             {
                 var code = session.ToString();
-                var cart = _unitOfWork.Carts.GetCart(code);
+                var userId = User.Identity.GetUserId();
+                var cart = userId == null ? _unitOfWork.Carts.GetCart(code) : _unitOfWork.Carts.GetUserCart(userId);
+                if (cart == null)
+                {
+                    ViewBag.Flag = 1;
+                    return View();
+                }
+
                 if (!cart.Items.Any())
                 {
                     ViewBag.Flag = 1;
@@ -86,14 +93,15 @@ namespace FantasyStore.WebApp.Controllers
             }
         }
 
-        private IEnumerable<SelectListItem> GetInstallmentListFormatted(decimal? total)
+        private SelectList GetInstallmentListFormatted(decimal? total)
         {
             const int installmentMaxMultiplier = 10;
             var result = new List<SelectListItem>();
 
             for (var i = 1; i <= installmentMaxMultiplier; i++)
             {
-                var value = (total/i).ToString().Replace(".", ",");
+                var value = decimal.Round((total/i).GetValueOrDefault(), 2)
+                    .ToString(CultureInfo.InvariantCulture).Replace(".", ",");
                 var item = new SelectListItem
                 {
                     Text = i == 1 ? string.Format("R$ {0} à vista", value) 
@@ -103,7 +111,7 @@ namespace FantasyStore.WebApp.Controllers
                 result.Add(item);
             }
 
-            return result;
+            return new SelectList(result, "Value", "Text");
         }
 
         [HttpGet]
@@ -123,33 +131,32 @@ namespace FantasyStore.WebApp.Controllers
                 const string message = @"Você ainda não possui um endereço de entrega cadastrado. 
                                 <a href='/Auth/CreateAddress'>Clique aqui para cadastrar </a>";
                 @ViewBag.Message = message;
-                return View();
+                return RedirectToAction("MyAccount", "Auth");
             }
-            var code = Session["CartId"].ToString();
-            var cart = _unitOfWork.Carts.GetCart(code);
+            
+            var cart = _unitOfWork.Carts.GetUserCart(User.Identity.GetUserId());
             var installmentList = GetInstallmentListFormatted(cart.Total);
-            ViewBag.InstallmentList = installmentList;
+            ViewBag.installment = installmentList;
             return View();
         }
 
         [HttpPost]
         public ActionResult Payment(PaymentViewModel model)
         {
-            var cartCode = Session["CartId"];
-            if(cartCode == null) throw new Exception("Carrinho não existe na sessão.");
-            var cart = _unitOfWork.Carts.GetCart(cartCode.ToString());
+            var cart = _unitOfWork.Carts.GetUserCart(User.Identity.GetUserId());
             var date = Convert.ToDateTime(model.ExpirationDate);
             var installmentValue = cart.Total/model.Installment;
             var user = _unitOfWork.Users.Get(User.Identity.GetUserId());
             var payment = new Payment
             {
                 Cart = cart,
-                CartCode = cartCode.ToString(),
+                CartCode = cart.Code,
                 CreditCardNumber = model.CreditCardNumber,
                 ExpirationDate = date,
                 Installment = model.Installment,
                 Value = cart.Total,
-                InstallmentValue = installmentValue
+                InstallmentValue = installmentValue,
+                Name = model.Name
             };
 
             var order = new Order
@@ -163,6 +170,8 @@ namespace FantasyStore.WebApp.Controllers
             _unitOfWork.Payments.Save(payment);
             _unitOfWork.Orders.Save(order);
             _unitOfWork.Commit();
+            var installmentList = GetInstallmentListFormatted(cart.Total);
+            ViewBag.installment = installmentList;
             return View();
         }
             

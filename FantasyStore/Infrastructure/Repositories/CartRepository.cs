@@ -122,7 +122,7 @@ namespace FantasyStore.Infrastructure.Repositories
                     HttpContext.Current.Session["CartId"] = cart.Code;
                     HttpContext.Current.Session.Timeout = 30;
                 }
-                else
+                else 
                 {
                     var item = _context.Items.Include(i => i.Product).Include(i => i.Cart)
                                          .SingleOrDefault(i => i.ProductId == productId && i.Cart.Id == cart.Id);
@@ -171,9 +171,13 @@ namespace FantasyStore.Infrastructure.Repositories
 
         public Cart GetUserCart(string userId)
         {
-            return _context.Carts.Include(c => c.Items)
+            var cart = _context.Carts.Include(c => c.Items)
                                     .Include(c => c.Items.Select(i => i.Product.Images))
-                                    .FirstOrDefault(c => c.User.Id.Equals(userId));
+                                    .OrderByDescending(c => c.Id)
+                                    .FirstOrDefault(c => c.User.Id.Equals(userId)
+                                    && !_context.Payments.Any(p => p.Cart.Id == c.Id));
+
+            return cart;
         }
 
 
@@ -192,5 +196,6 @@ namespace FantasyStore.Infrastructure.Repositories
             var cart = GetCart(cartCode);
             cart.Total = GetTotal(cart.Items);
         }
+
     }
 }

@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace FantasyStore.Domain
 {
@@ -17,6 +13,6 @@ namespace FantasyStore.Domain
         public decimal? Value { get; set; }
         public int Installment { get; set; }
         public decimal? InstallmentValue { get; set; }
-
+        public string Name { get; set; }
     }
 }

@@ -1,11 +1,11 @@
-﻿
-@{
+﻿@{
     ViewBag.Title = "Payment";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
 <h3>Finalização do pedido</h3>
-<hr/>
+@model FantasyStore.WebApp.ViewModels.PaymentViewModel
+<hr />
 @if (@ViewBag.AddressMessage != null)
 {
     @ViewBag.AddressMessage
@@ -15,13 +15,17 @@ else
     using (Html.BeginForm())
     {
         <label>Numero do cartao de crédito</label>
-        @Html.TextBox("creditCardNumber", null, new { @class = "form-control", @style = "width:500px;" })<br/>
+        @Html.TextBoxFor(m => m.CreditCardNumber, null, new { @class = "form-control", @style = "width:500px;" })<br />
         <label>Código de segurança</label>
-        @Html.TextBox("securityCode", null, new { @class = "form-control", @style = "width:50px;" })<br/>
+        @Html.TextBoxFor(m => m.SecurityCode, null, new { @class = "form-control", @style = "width:50px;" })<br />
+        <label>Validade</label>
+        @Html.TextBoxFor(m => m.ExpirationDate, null, new { @class = "form-control", @style = "width:250px;" })<br />
+        <label>Nome do titular</label>
+        @Html.TextBoxFor(m => m.Name, null, new { @class = "form-control", @style = "width:250px;" })<br />
         <label>Parcelamento</label>
-        @Html.DropDownList("installment", (IEnumerable<SelectListItem>)@ViewBag.InstallmentList ,new { @class = "form-control", @style = "width:500px;"})<br/>
+        @Html.DropDownList("installment", null, new { @class = "form-control", @style = "width:500px;" })<br />
 
-        
+
         <p>
             <button class="btn btn-primary" type="submit">Realizar pagamento</button>
         </p>

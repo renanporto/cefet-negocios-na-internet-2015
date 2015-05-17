@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using System.Web.Mvc;
 
 namespace FantasyStore.WebApp.ViewModels
 {
@@ -11,6 +12,7 @@ namespace FantasyStore.WebApp.ViewModels
         public string ExpirationDate { get; set; }
         public string SecurityCode { get; set; }
         public int Installment { get; set; }
+        public string Name { get; set; }
 
     }
 }

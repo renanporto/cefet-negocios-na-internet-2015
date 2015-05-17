@@ -115,7 +115,33 @@ namespace FantasyStore.WebApp.Controllers
             return View();
         }
 
-        
+        [HttpGet]
+        public ActionResult CreateAddress()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult CreateAddress(AddressViewModel model)
+        {
+            var address = new Address
+            {
+                Cep = model.Cep,
+                City = model.City,
+                Complement = model.Complement,
+                HouseNumber = model.HouseNumber,
+                IsDeliveryAddress = true,
+                State = model.State,
+                Street = model.Street
+            };
+
+            _unitOfWork.Addresses.Insert(address);
+            _unitOfWork.Commit();
+
+            return View();
+        }
+
+
         [HttpPost]
         public async Task<ActionResult> Register(RegisterModel model)
         {
