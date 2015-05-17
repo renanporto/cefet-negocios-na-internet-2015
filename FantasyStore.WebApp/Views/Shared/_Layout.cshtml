@@ -22,14 +22,26 @@
         <h1 class="title">Fantasy Store</h1>
         @if (CurrentUser != null)
         {
-            <span style="color: cadetblue; margin-left: 850px;">Bem-vindo, <strong>@CurrentUser.FirstName @CurrentUser.LastName</strong> </span>
-            <span style="color: darkslategrey; margin-left: 50px; font-weight: bold;"><a href="/Auth/LogOut">Sair</a></span>
+            <div style="height:30px;">
+                <a href="/Checkout/Cart" style="position:absolute">
+                    <img src="~/Content/Images/logo-minicart.jpg" style="width: 30px; height: 30px; margin-left:710px; margin-right:10px;" />
+                    Meu carrinho
+                </a>
+                <span style="color: cadetblue; margin-left: 850px;">Bem-vindo, <strong>@CurrentUser.FirstName @CurrentUser.LastName</strong> </span>
+                <span style="color: darkslategrey; margin-left: 50px; font-weight: bold;"><a href="/Auth/LogOut">Sair</a></span>
+            </div>
         }
         else
         {
-            <span style="color: cadetblue; margin-left: 900px;">Olá, <strong>visitante</strong> </span>
-            <span style="color:midnightblue; margin-left: 10px;"><strong><a href="/Auth/Login">Login</a></strong> </span>
-            <span style="color:midnightblue; margin-left: 10px;"><strong><a href="/Auth/Register">Registrar</a></strong> </span>
+            <div style="height:30px;">
+                <a href="/Checkout/Cart" style="position:absolute">
+                    <img src="~/Content/Images/logo-minicart.jpg" style="width: 30px; height: 30px; margin-left:750px; margin-right:10px;" />
+                    Meu carrinho
+                </a>
+                <span style="color: cadetblue; margin-left: 900px;">Olá, <strong>visitante</strong> </span>
+                <span style="color:midnightblue; margin-left: 10px;"><strong><a href="/Auth/Login">Login</a></strong> </span>
+                <span style="color:midnightblue; margin-left: 10px;"><strong><a href="/Auth/Register">Registrar</a></strong> </span>
+            </div>
         }
 
         <nav class="navbar navbar-default">
@@ -42,35 +54,35 @@
                         <li class="dropdown">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Categorias <span class="caret"></span></a>
                             <ul class="dropdown-menu" role="menu">
-                                <li>@Html.ActionLink("Bebê", "Category", new { id = 2 })</li>
-                                <li>@Html.ActionLink("Infantil", "Category", new { id = 3 })</li>
-                                <li>@Html.ActionLink("Teen", "Category", new { id = 4 })</li>
-                                <li>@Html.ActionLink("Adulto", "Category", new { id = 5 })</li>
-                                <li>@Html.ActionLink("Acessórios", "Category", new { id = 6 })</li>
+                                <li><a href="/Home/Category/2">Bebê</a></li>
+                                <li><a href="/Home/Category/3">Infantil</a></li>
+                                <li><a href="/Home/Category/4">Teen</a></li>
+                                <li><a href="/Home/Category/5">Adulto</a></li>
+                                <li><a href="/Home/Category/6">Acessórios</a></li>
                             </ul>
                         </li>
                         <li><a href="/Home/About">Empresa </a></li>
                         <li><a href="/Home/Contact">Contato </a></li>
                     </ul>
-                    @using (Html.BeginForm("Search", "Home", FormMethod.Post, new { @class="navbar-form navbar-left", @role="search"}))
+                    @using (Html.BeginForm("Search", "Home", FormMethod.Post, new { @class = "navbar-form navbar-left", @role = "search" }))
                     {
                         <div class="col-lg-6">
                             <div style="float:left; ">
-                                @Html.DropDownListFor(x=>x.Criteria, new List<SelectListItem>
-                            {
-                                new SelectListItem
+                                @Html.DropDownListFor(x => x.Criteria, new List<SelectListItem>
                                 {
-                                    Text = "Código do produto", Value = "1"
-                                },
-                                new SelectListItem
-                                {
-                                    Text = "Nome do produto", Value = "2"
-                                },
-                                new SelectListItem
-                                {
-                                    Text = "Faixa de preço (Ex: 30 - 100)", Value = "3"
-                                }
-                            }, new { @class = "form-control", @style = "width:200px;" })
+                                    new SelectListItem
+                                    {
+                                        Text = "Código do produto", Value = "1"
+                                    },
+                                    new SelectListItem
+                                    {
+                                        Text = "Nome do produto", Value = "2"
+                                    },
+                                    new SelectListItem
+                                    {
+                                        Text = "Faixa de preço (Ex: 30 - 100)", Value = "3"
+                                    }
+                                }, new { @class = "form-control", @style = "width:200px;" })
                             </div>
                             <div class="input-group" style="margin-left:10px; position:absolute;">
                                 @Html.TextBoxFor(m => m.Term, new { @class = "form-control", @style = "width: 220px;", @placeholder = "Pesquisar..." })
@@ -81,9 +93,7 @@
                             </div>
                         </div>
                     }
-                    <form class="navbar-form navbar-left" role="search">
-                        
-                    </form>
+                    <form class="navbar-form navbar-left" role="search"></form>
                     <ul class="nav navbar-nav navbar-right">
                         <li class="dropdown">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Minhas informações <span class="caret"></span></a>
@@ -97,9 +107,10 @@
                 </div>
             </div>
         </nav>
-        @RenderBody()
         @Scripts.Render("~/bundles/jquery")
         @Scripts.Render("~/bundles/bootstrap")
+        @RenderBody()
+
         <script src="~/Js/buy-button.js"></script>
     </div>
 </body>

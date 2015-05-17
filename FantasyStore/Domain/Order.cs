@@ -8,16 +8,11 @@ namespace FantasyStore.Domain
 {
     public class Order
     {
-        private IEnumerable<Item> _items; 
         public int Id { get; set; }
 
         public User Owner { get; set; }
 
-        public IEnumerable<Item> Items
-        {
-            get { return _items ?? (_items = new List<Item>()); }
-            set { _items = value; }
-        }
+        public Cart Cart { get; set; }
 
         public DateTime CreatedAt { get; set; }
 
@@ -31,6 +26,5 @@ namespace FantasyStore.Domain
         public int? ProductId { get; set; }
         public Cart Cart { get; set; }
         public Product Product { get; set; }
-        public Order Order { get; set; }
     }
 }

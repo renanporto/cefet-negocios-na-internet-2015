@@ -73,21 +73,38 @@
     <Compile Include="Domain\Address.cs" />
     <Compile Include="Domain\Cart.cs" />
     <Compile Include="Domain\Category.cs" />
-    <Compile Include="Domain\Client.cs" />
     <Compile Include="Domain\Collection.cs" />
     <Compile Include="Domain\Image.cs" />
     <Compile Include="Domain\Order.cs" />
+    <Compile Include="Domain\Payment.cs" />
     <Compile Include="Domain\User.cs" />
     <Compile Include="Domain\Product.cs" />
     <Compile Include="Domain\WishList.cs" />
     <Compile Include="Infrastructure\FantasyStoreDbContext.cs" />
     <Compile Include="Infrastructure\Repositories\AdressRepository.cs" />
     <Compile Include="Infrastructure\Repositories\CartRepository.cs" />
-    <Compile Include="Infrastructure\Repositories\ClientRepository.cs" />
     <Compile Include="Infrastructure\Repositories\ItemRepository.cs" />
     <Compile Include="Infrastructure\Repositories\OrderRepository.cs" />
+    <Compile Include="Infrastructure\Repositories\PaymentRepository.cs" />
     <Compile Include="Infrastructure\Repositories\ProductRepository.cs" />
+    <Compile Include="Infrastructure\Repositories\UserRepository.cs" />
     <Compile Include="Infrastructure\UnitOfWork.cs" />
+    <Compile Include="Migrations\201505162250320_cart.cs" />
+    <Compile Include="Migrations\201505162250320_cart.Designer.cs">
+      <DependentUpon>201505162250320_cart.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201505162307011_cart2.cs" />
+    <Compile Include="Migrations\201505162307011_cart2.Designer.cs">
+      <DependentUpon>201505162307011_cart2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201505162346285_cart23.cs" />
+    <Compile Include="Migrations\201505162346285_cart23.Designer.cs">
+      <DependentUpon>201505162346285_cart23.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201505171553239_cart2323.cs" />
+    <Compile Include="Migrations\201505171553239_cart2323.Designer.cs">
+      <DependentUpon>201505171553239_cart2323.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\EmailService.cs" />
@@ -95,6 +112,20 @@
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201505162250320_cart.resx">
+      <DependentUpon>201505162250320_cart.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201505162307011_cart2.resx">
+      <DependentUpon>201505162307011_cart2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201505162346285_cart23.resx">
+      <DependentUpon>201505162346285_cart23.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201505171553239_cart2323.resx">
+      <DependentUpon>201505171553239_cart2323.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

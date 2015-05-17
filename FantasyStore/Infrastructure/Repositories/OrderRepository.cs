@@ -26,25 +26,16 @@ namespace FantasyStore.Infrastructure.Repositories
             return _context.Orders;
         }
 
-        //public IEnumerable<Order> GetByOwner(int ownerId)
-        //{
-        //    return _context.Orders.Where(o => o.Owner.Id == ownerId);
-        //}
+        public IEnumerable<Order> GetByOwner(string ownerId)
+        {
+            return _context.Orders.Where(o => o.Owner.Id == ownerId);
+        }
 
-        public void Insert(Order order)
+        public void Save(Order order)
         {
             _context.Orders.Add(order);
         }
 
-        public void Delete(Order order)
-        {
-            _context.Orders.Remove(order);
-        }
-
-        public void Update(Order order)
-        {
-            _context.Orders.Attach(order);
-            _context.Entry(order).State = EntityState.Modified; ;
-        }
+        
     }
 }

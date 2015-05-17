@@ -13,19 +13,6 @@ namespace FantasyStore.Domain
 
         }
 
-        public Address(int id, string city, string state, string cep, string street, string houseNumber, 
-            string complement, bool isDeliveryAddress)
-        {
-            Id = id;
-            City = city;
-            State = state;
-            Cep = cep;
-            Street = street;
-            HouseNumber = houseNumber;
-            Complement = complement;
-            IsDeliveryAddress = isDeliveryAddress;
-        }
-
         public int Id { get; set; }
         public string City { get; set; }
         public string State { get; set; }

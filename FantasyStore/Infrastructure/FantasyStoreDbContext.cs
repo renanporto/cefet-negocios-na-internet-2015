@@ -21,11 +21,11 @@ namespace FantasyStore.Infrastructure
         public DbSet<Order> Orders { get; set; }
         public DbSet<Item> Items { get; set; }
         public DbSet<Address> Addresses { get; set; }
-        public DbSet<Client> Clients { get; set; }
         public DbSet<Category> Categories { get; set; }
         public DbSet<WishList> WishLists { get; set; }
         public DbSet<Image> Images { get; set; }
         public DbSet<Collection> Collections { get; set; }
         public DbSet<Cart> Carts { get; set; }
+        public DbSet<Payment> Payments { get; set; }
     }
 }

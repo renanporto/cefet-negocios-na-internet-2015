@@ -13,15 +13,32 @@ namespace FantasyStore.Infrastructure
         private OrderRepository _orderRepository;
         private ProductRepository _productRepository;
         private AddressRepository _addressRepository;
-        private ClientRepository _clientRepository;
         private CartRepository _cartRepository;
         private ItemRepository _items;
+        private UserRepository _users;
+        private PaymentRepository _payments;
 
         public ItemRepository Items
         {
             get
             {
                 return _items ?? (_items = new ItemRepository(_context));
+            }
+        }
+
+        public PaymentRepository Payments
+        {
+            get
+            {
+                return _payments ?? (_payments = new PaymentRepository(_context));
+            }
+        }
+
+        public UserRepository Users
+        {
+            get
+            {
+                return _users ?? (_users = new UserRepository(_context));
             }
         }
 
@@ -54,14 +71,6 @@ namespace FantasyStore.Infrastructure
             get
             {
                 return _addressRepository ?? (_addressRepository = new AddressRepository(_context));
-            }
-        }
-
-        public ClientRepository Clients
-        {
-            get
-            {
-                return _clientRepository ?? (_clientRepository = new ClientRepository(_context));
             }
         }
 

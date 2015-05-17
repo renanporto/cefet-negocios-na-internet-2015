@@ -1,0 +1,29 @@
+﻿
+@{
+    ViewBag.Title = "Payment";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h3>Finalização do pedido</h3>
+<hr/>
+@if (@ViewBag.AddressMessage != null)
+{
+    @ViewBag.AddressMessage
+}
+else
+{
+    using (Html.BeginForm())
+    {
+        <label>Numero do cartao de crédito</label>
+        @Html.TextBox("creditCardNumber", null, new { @class = "form-control", @style = "width:500px;" })<br/>
+        <label>Código de segurança</label>
+        @Html.TextBox("securityCode", null, new { @class = "form-control", @style = "width:50px;" })<br/>
+        <label>Parcelamento</label>
+        @Html.DropDownList("installment", (IEnumerable<SelectListItem>)@ViewBag.InstallmentList ,new { @class = "form-control", @style = "width:500px;"})<br/>
+
+        
+        <p>
+            <button class="btn btn-primary" type="submit">Realizar pagamento</button>
+        </p>
+    }
+}

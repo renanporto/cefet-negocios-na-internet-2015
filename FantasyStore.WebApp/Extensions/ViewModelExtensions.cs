@@ -38,5 +38,19 @@ namespace FantasyStore.WebApp.Extensions
                 ProductLink = productLink
             };
         }
+
+        public static CartItemViewModel ToCartItemViewModel(this Item item)
+        {
+            var price = item.Product.Price.ToString().Replace(".", ",");
+            return new CartItemViewModel
+            {
+                Id = item.Id,
+                Amount = item.Amount,
+                ProductName = item.Product.Name,
+                Price = price,
+                ImageUrl = item.Product.Images.First().Url,
+                ProductId = item.Product.Id
+            };
+        }
     }
 }

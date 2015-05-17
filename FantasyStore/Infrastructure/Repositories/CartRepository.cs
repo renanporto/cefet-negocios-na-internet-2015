@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data.Entity;
+using System.Data.Entity.Core.Objects;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -31,6 +32,20 @@ namespace FantasyStore.Infrastructure.Repositories
             return sessionCartId.ToString();
         }
 
+
+        private decimal? GetTotal(IEnumerable<Item> items)
+        {
+            var result = 0m;
+
+            foreach (var item in items)
+            {
+                var subTotal = (item.Product.Price * item.Amount).Value;
+                result += subTotal;
+            }
+
+            return result;
+        }
+
         public void Add(int productId)
         {
             var userId = HttpContext.Current.User.Identity.GetUserId();
@@ -55,18 +70,19 @@ namespace FantasyStore.Infrastructure.Repositories
                             Product = _context.Products.SingleOrDefault(p => p.Id == productId),
                             ProductId = productId
                         };
-                        cart.Total += item.Product.Price;
+
                         cart.Items.Add(item);
                     }
                     else
                     {
                         item.Amount++;
-                        cart.Total += item.Product.Price;
                     }
+                    cart.Total = GetTotal(cart.Items);
                 }// caso não esteja na sessao, cria o carrinho
                 else
                 {
                     HttpContext.Current.Session["CartId"] = cartCode;
+                    HttpContext.Current.Session.Timeout = 30;
                     var item = new Item
                     {
                         Amount = 1,
@@ -76,46 +92,69 @@ namespace FantasyStore.Infrastructure.Repositories
                     var cart = new Cart
                     {
                         Items = new List<Item> { item },
-                        Total = item.Product.Price,
                         Code = cartCode
                     };
+
+                    cart.Total = GetTotal(cart.Items);
 
                     Save(cart);
                 }
             }
             else
             {
-                var cart = _context.Carts.SingleOrDefault(c => c.User.Id == userId);
+                var cart = GetUserCart(userId);
 
-                var item = _context.Items.Include(i => i.Product).Include(i => i.Cart)
-                                         .SingleOrDefault(i => i.ProductId == productId && i.Cart.Id == cart.Id);
-
-                if (item == null)
+                if (cart == null)
                 {
-                    item = new Item
+                    var user = _context.Users.Find(userId);
+                    cart = new Cart { User = user, Code = Guid.NewGuid().ToString() };
+                    var item = new Item
                     {
                         Amount = 1,
                         Cart = cart,
                         ProductId = productId,
                         Product = _context.Products.FirstOrDefault(p => p.Id == productId)
                     };
+
+                    cart.Items.Add(item);
+                    cart.Total = GetTotal(cart.Items);
+                    Save(cart);
+                    HttpContext.Current.Session["CartId"] = cart.Code;
+                    HttpContext.Current.Session.Timeout = 30;
                 }
                 else
                 {
-                    item.Amount++;
-                }
-                
-                if (cart == null)
-                {
-                    cart = new Cart
+                    var item = _context.Items.Include(i => i.Product).Include(i => i.Cart)
+                                         .SingleOrDefault(i => i.ProductId == productId && i.Cart.Id == cart.Id);
+
+                    if (item == null)
                     {
-                        Items = new List<Item> {item},
-                        Total = item.Product.Price,
-                        User = _context.Users.Find(userId)
-                    };
+                        item = new Item
+                        {
+                            Amount = 1,
+                            Cart = cart,
+                            ProductId = productId,
+                            Product = _context.Products.FirstOrDefault(p => p.Id == productId)
+                        };
+
+                        cart.Items.Add(item);
+                    }
+                    else
+                    {
+                        item.Amount++;
+                    }
+
+                    cart.Total = GetTotal(cart.Items);
+                    Update(cart);
                 }
-                cart.Items.Add(item);
+
             }
+        }
+
+        public void Update(Cart cart)
+        {
+            _context.Carts.Attach(cart);
+            _context.Entry(cart).State = EntityState.Modified;
         }
 
         public void Save(Cart cart)
@@ -123,9 +162,35 @@ namespace FantasyStore.Infrastructure.Repositories
             _context.Carts.Add(cart);
         }
 
+        public Cart GetCart(string cartCode)
+        {
+            return _context.Carts.Include(c => c.Items)
+                                 .Include(c => c.Items.Select(i => i.Product.Images))
+                                 .FirstOrDefault(c => c.Code.Equals(cartCode));
+        }
+
         public Cart GetUserCart(string userId)
         {
-            return _context.Carts.FirstOrDefault(c => c.User.Id.Equals(userId));
+            return _context.Carts.Include(c => c.Items)
+                                    .Include(c => c.Items.Select(i => i.Product.Images))
+                                    .FirstOrDefault(c => c.User.Id.Equals(userId));
+        }
+
+
+        public void Remove(int productId)
+        {
+            var userId = HttpContext.Current.User.Identity.GetUserId();
+            
+            var cartCode = userId == null ? GetCartCode() : GetUserCart(userId).Code;
+            
+            var item = _context.Items.Include(i => i.Product).Include(i => i.Cart)
+                .FirstOrDefault(i => i.ProductId == productId && i.Cart.Code.Equals(cartCode));
+
+            _context.Items.Attach(item);
+            _context.Entry(item).State = EntityState.Deleted;
+
+            var cart = GetCart(cartCode);
+            cart.Total = GetTotal(cart.Items);
         }
     }
 }

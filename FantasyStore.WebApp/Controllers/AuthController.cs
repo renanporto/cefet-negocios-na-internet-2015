@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
 using FantasyStore.Domain;
+using FantasyStore.Infrastructure;
 using FantasyStore.WebApp.Extensions;
 using FantasyStore.WebApp.ViewModels;
 using Microsoft.AspNet.Identity;
@@ -17,6 +18,7 @@ namespace FantasyStore.WebApp.Controllers
     [AllowAnonymous]
     public class AuthController : Controller
     {
+        private readonly UnitOfWork _unitOfWork = new UnitOfWork();
         private readonly UserManager<User> _userManager;
 
         public AuthController()
@@ -113,6 +115,7 @@ namespace FantasyStore.WebApp.Controllers
             return View();
         }
 
+        
         [HttpPost]
         public async Task<ActionResult> Register(RegisterModel model)
         {
@@ -140,7 +143,7 @@ namespace FantasyStore.WebApp.Controllers
             };
 
             var result = await _userManager.CreateAsync(user, model.Password);
-
+           
             if (result.Succeeded)
             {
                 await SignIn(user);
