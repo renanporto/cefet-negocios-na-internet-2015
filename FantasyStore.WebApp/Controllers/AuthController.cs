@@ -124,6 +124,13 @@ namespace FantasyStore.WebApp.Controllers
         [HttpPost]
         public ActionResult CreateAddress(AddressViewModel model)
         {
+            var userId = User.Identity.GetUserId();
+
+            if (string.IsNullOrWhiteSpace(userId))
+            {
+                return RedirectToAction("Login", "Auth");
+            }
+            var user = _unitOfWork.Users.Get(userId);
             var address = new Address
             {
                 Cep = model.Cep,
@@ -132,7 +139,8 @@ namespace FantasyStore.WebApp.Controllers
                 HouseNumber = model.HouseNumber,
                 IsDeliveryAddress = true,
                 State = model.State,
-                Street = model.Street
+                Street = model.Street,
+                User = user
             };
 
             _unitOfWork.Addresses.Insert(address);

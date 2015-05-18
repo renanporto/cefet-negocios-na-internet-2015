@@ -117,25 +117,9 @@
     <Compile Include="Infrastructure\Repositories\ProductRepository.cs" />
     <Compile Include="Infrastructure\Repositories\UserRepository.cs" />
     <Compile Include="Infrastructure\UnitOfWork.cs" />
-    <Compile Include="Migrations\201505162250320_cart.cs" />
-    <Compile Include="Migrations\201505162250320_cart.Designer.cs">
-      <DependentUpon>201505162250320_cart.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201505162307011_cart2.cs" />
-    <Compile Include="Migrations\201505162307011_cart2.Designer.cs">
-      <DependentUpon>201505162307011_cart2.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201505162346285_cart23.cs" />
-    <Compile Include="Migrations\201505162346285_cart23.Designer.cs">
-      <DependentUpon>201505162346285_cart23.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201505171553239_cart2323.cs" />
-    <Compile Include="Migrations\201505171553239_cart2323.Designer.cs">
-      <DependentUpon>201505171553239_cart2323.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201505172007429_cart2323d.cs" />
-    <Compile Include="Migrations\201505172007429_cart2323d.Designer.cs">
-      <DependentUpon>201505172007429_cart2323d.cs</DependentUpon>
+    <Compile Include="Migrations\201505172302122_cart2323ddd.cs" />
+    <Compile Include="Migrations\201505172302122_cart2323ddd.Designer.cs">
+      <DependentUpon>201505172302122_cart2323ddd.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -146,20 +130,8 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201505162250320_cart.resx">
-      <DependentUpon>201505162250320_cart.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201505162307011_cart2.resx">
-      <DependentUpon>201505162307011_cart2.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201505162346285_cart23.resx">
-      <DependentUpon>201505162346285_cart23.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201505171553239_cart2323.resx">
-      <DependentUpon>201505171553239_cart2323.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201505172007429_cart2323d.resx">
-      <DependentUpon>201505172007429_cart2323d.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201505172302122_cart2323ddd.resx">
+      <DependentUpon>201505172302122_cart2323ddd.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

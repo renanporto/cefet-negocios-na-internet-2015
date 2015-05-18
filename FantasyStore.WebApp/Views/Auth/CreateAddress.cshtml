@@ -1,0 +1,40 @@
+﻿
+@{
+    ViewBag.Title = "CreateAddress";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Cadastro de endereço para entrega</h2>
+<hr/>
+
+@using (Html.BeginForm())
+{
+    <div style="float:left; margin-right: 30px;">
+        <label>Endereço</label>
+        @Html.TextBox("street", null, new { @class = "form-control", @style = "width:500px;", @placeholder = "Ex: Rua Manoel Onofre de Souza" })<br />
+    </div>
+    <div style="float:left; margin-right: 30px;">
+        <label>Complemento</label>
+        @Html.TextBox("complement", null, new { @class = "form-control", @style = "width:300px;", @placeholder = "Ex: Ap. 503" })<br />
+    </div>
+    <div>
+        <label>Número</label>
+        @Html.TextBox("houseNumber", null, new { @class = "form-control", @style = "width:80px;", @placeholder = "Ex: 78" })<br />
+    </div>
+    <div style="float:left; margin-right: 30px;">
+        <label>Cidade</label>
+        @Html.TextBox("city", null, new { @class = "form-control", @style = "width:300px;", @placeholder = "Ex: Volta Redonda" })<br />
+    </div>
+    <div style="float:left; margin-right: 30px;">
+        <label>Estado</label>
+        @Html.TextBox("state", null, new { @class = "form-control", @style = "width:80px;", @placeholder = "Ex: RJ" })<br />
+    </div>
+    <div>
+        <label>Cep</label>
+        @Html.TextBox("cep", null, new { @class = "form-control", @style = "width:300px;", @placeholder = "Ex: 20271-120" })<br />
+    </div>
+    <div>
+        <button type="submit" class="btn btn-primary">Cadastrar endereço</button>
+    </div>
+}
+

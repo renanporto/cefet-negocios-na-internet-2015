@@ -21,16 +21,16 @@ namespace FantasyStore.Domain
         public DateTime? BirthDate { get; set; }
         public string  Document { get; set; }
 
-        private IEnumerable<Address> _addresses;
-        private IEnumerable<Order> _orders; 
+        private ICollection<Address> _addresses;
+        private ICollection<Order> _orders;
 
-        public IEnumerable<Order> Orders
+        public ICollection<Order> Orders
         {
             get { return _orders ?? (_orders = new List<Order>()); }
             set { _orders = value; }
         }
 
-        public IEnumerable<Address> Addresses
+        public ICollection<Address> Addresses
         {
             get { return _addresses ?? (_addresses = new List<Address>()); }
             set { _addresses = value; }

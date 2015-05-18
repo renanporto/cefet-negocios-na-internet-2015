@@ -13,12 +13,16 @@
             <div class="panel-footer">
                 @using (Html.BeginForm())
                 {
-                    <label>Nome</label>
-                    @Html.TextBoxFor(m => m.FirstName, new { @class = "form-control", @style = "width:500px;", @placeholder = "Entre com o nome" }) 
-                    @Html.ValidationMessageFor(m => m.FirstName, null, new {@class = "validation-errors"})<br />
-                    <label>Sobrenome</label>
-                    @Html.TextBoxFor(m => m.LastName, new { @class = "form-control", @style = "width:500px;", @placeholder = "Entre com o sobrenome" })
-                    @Html.ValidationMessageFor(m => m.LastName, null, new { @class = "validation-errors" })<br />
+                    <div style="float:left; margin-right: 30px;">
+                        <label>Nome</label>
+                        @Html.TextBoxFor(m => m.FirstName, new { @class = "form-control", @style = "width:500px;", @placeholder = "Entre com o nome" })
+                        @Html.ValidationMessageFor(m => m.FirstName, null, new { @class = "validation-errors" })<br />
+                    </div>
+                    <div>
+                        <label>Sobrenome</label>
+                        @Html.TextBoxFor(m => m.LastName, new { @class = "form-control", @style = "width:500px;", @placeholder = "Entre com o sobrenome" })
+                        @Html.ValidationMessageFor(m => m.LastName, null, new { @class = "validation-errors" })<br />
+                    </div>
                     <label>CPF</label>
                     @Html.TextBoxFor(m => m.Document, new { @class = "form-control", @style = "width:500px;", @placeholder = "Entre com o CPF" })
                     @Html.ValidationMessageFor(m => m.Document, null, new { @class = "validation-errors" })<br />

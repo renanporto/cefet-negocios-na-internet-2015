@@ -25,8 +25,7 @@ var Client = (function () {
         };
 
         $.ajax(ajaxConfig)
-            .done(function (data) {
-                alert(data);
+            .done(function () {
                 location.reload();
             });
     };

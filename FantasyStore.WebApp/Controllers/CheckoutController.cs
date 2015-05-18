@@ -67,12 +67,30 @@ namespace FantasyStore.WebApp.Controllers
                     return View();                    
                 }
 
+                var hasDeliveryAddress = user.Addresses.Any(a => a.IsDeliveryAddress);
+                if (!hasDeliveryAddress)
+                {
+                    const string message = @"<div class='alert alert-info'>Atenção. Você ainda não possui um endereço de entrega cadastrado. 
+                                <a href='/Auth/CreateAddress'>Clique aqui para cadastrar </a></div>";
+                    @ViewBag.Message = message;
+                    @ViewBag.Disabled = "disabled";
+                }
+
                 var items = cart.Items.Select(i => i.ToCartItemViewModel());
                 ViewBag.CartItems = items;
                 return View();   
             }
             else
             {
+                var hasDeliveryAddress = user.Addresses.Any(a => a.IsDeliveryAddress);
+                if (!hasDeliveryAddress)
+                {
+                    const string message = @"<div class='alert alert-info'>Atenção. Você ainda não possui um endereço de entrega cadastrado. 
+                                <a href='/Auth/CreateAddress'>Clique aqui para cadastrar </a></div>";
+                    @ViewBag.Message = message;
+                    @ViewBag.Disabled = "disabled";
+                }
+
                 var code = session.ToString();
                 var userId = User.Identity.GetUserId();
                 var cart = userId == null ? _unitOfWork.Carts.GetCart(code) : _unitOfWork.Carts.GetUserCart(userId);
@@ -122,19 +140,8 @@ namespace FantasyStore.WebApp.Controllers
             {
                 return RedirectToAction("Login", "Auth");
             }
-
-            var user = _unitOfWork.Users.Get(userId);
-
-            var hasDeliveryAddress = user.Addresses.Any(a => a.IsDeliveryAddress);
-            if (!hasDeliveryAddress)
-            {
-                const string message = @"Você ainda não possui um endereço de entrega cadastrado. 
-                                <a href='/Auth/CreateAddress'>Clique aqui para cadastrar </a>";
-                @ViewBag.Message = message;
-                return RedirectToAction("MyAccount", "Auth");
-            }
             
-            var cart = _unitOfWork.Carts.GetUserCart(User.Identity.GetUserId());
+            var cart = _unitOfWork.Carts.GetUserCart(userId);
             var installmentList = GetInstallmentListFormatted(cart.Total);
             ViewBag.installment = installmentList;
             return View();

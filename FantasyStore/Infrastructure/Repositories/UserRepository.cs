@@ -18,7 +18,7 @@ namespace FantasyStore.Infrastructure.Repositories
 
         public User Get(string userId)
         {
-            return _context.Users.FirstOrDefault(u => u.Id.Equals(userId));
+            return _context.Users.Include(u => u.Addresses).FirstOrDefault(u => u.Id.Equals(userId));
         }
         
 
