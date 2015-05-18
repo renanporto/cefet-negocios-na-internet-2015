@@ -151,6 +151,7 @@
     <Content Include="Js\buy-button.js" />
     <Content Include="Js\checkout.js" />
     <Content Include="Js\tracking.js" />
+    <Content Include="Js\wishlist.js" />
     <Content Include="Scripts\vex.combined.min.js" />
     <Content Include="Scripts\vex.dialog.js" />
     <Content Include="Views\Shared\Error.cshtml" />
@@ -178,6 +179,8 @@
     <Content Include="Views\WishLists\Index.cshtml" />
     <Content Include="Views\WishLists\All.cshtml" />
     <Content Include="Views\WishLists\Create.cshtml" />
+    <Content Include="Views\WishLists\Search.cshtml" />
+    <Content Include="Views\WishLists\Details.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

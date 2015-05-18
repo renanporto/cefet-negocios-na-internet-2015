@@ -1,0 +1,24 @@
+﻿@{
+    ViewBag.Title = "Search";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<script type="text/javascript" language="javascript" src="~/Js/wishlist.js"></script>
+<h2>Buscar</h2>
+<hr />
+<div style="float: left; margin-left: 20px;">
+    <select class="form-control ddl-criteria">
+        <option value="1">Código da lista</option>
+        <option value="2">Nome da lista</option>
+    </select>
+</div>
+<div style="float: left; margin-left: 20px;">
+    <input type="text" class="form-control search-box" style="width:300px;" /><br /><br />
+</div>
+<div style="float: left; margin-left: 10px;">
+    <button class="btn btn-primary search" type="button">Buscar</button>
+</div>
+<br/><br /><br />
+
+<div class="alert alert-info searching" style="display: none;"></div>
+<div class="alert alert-warning not-found" style="display: none;"></div>
+<div class="search-result" style="display: none;"></div>

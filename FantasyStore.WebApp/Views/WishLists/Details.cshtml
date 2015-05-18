@@ -1,0 +1,55 @@
+﻿@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<style>
+    img {
+        width: 70px;
+        height: 70px;
+    }
+</style>
+<h2>Detalhes</h2>
+<hr />
+
+<div class="alert alert-info">
+    <p>
+        Código da lista: <strong>@ViewBag.WishList.Code</strong> <br />
+        Nome da lista: <strong>@ViewBag.WishList.Name</strong> <br />
+        Administrador: <strong>@ViewBag.WishList.User.FirstName @ViewBag.WishList.User.LastName</strong> <br />
+        Data de criação: <strong>@ViewBag.CreatedAt</strong>
+    </p>
+</div>
+
+@if (@ViewBag.Products == null)
+{
+    <div class="alert alert-warning">
+        <p>
+            <strong>Sua lista está vazia. <a href="/Home">Clique aqui</a> para escolher os produtos.</strong>
+        </p>
+    </div>
+}
+else
+{
+    <table class="table table-striped table-bordered table-hover">
+        <tr>
+            <th>Produto</th>
+            <th>Preço</th>
+            <th></th>
+        </tr>
+        @foreach (var product in @ViewBag.WishList.Products)
+        {
+            <tr>
+                <td>
+                    <div>
+                        <img src="@product.Images[0].ImageUrl" alt="@product.Images[0].Name" />
+                        <strong>@product.Name </strong><br />
+                    </div>
+                </td>
+                <td><span class="current-price">@product.Price</span></td>
+                <td><a href="#" data-productid="@product.Id" class="remove-item"><span class="glyphicon glyphicon-remove" aria-hidden="true" style="margin-top: 30px; color: red;"></span> </a></td>
+            </tr>
+        }
+    </table>
+}
+

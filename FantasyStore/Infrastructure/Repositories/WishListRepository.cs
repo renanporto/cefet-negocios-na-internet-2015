@@ -4,7 +4,9 @@ using System.Data.Entity;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Web;
 using FantasyStore.Domain;
+using Microsoft.AspNet.Identity;
 
 namespace FantasyStore.Infrastructure.Repositories
 {
@@ -48,6 +50,15 @@ namespace FantasyStore.Infrastructure.Repositories
         public void Save(WishList wishList)
         {
             _context.WishLists.Add(wishList);
+        }
+
+        public WishList Get(int id)
+        {
+            var ownerId = HttpContext.Current.User.Identity.GetUserId();
+            return _context.WishLists.Include(w => w.Products.Select(p => p.Images))
+                                      .Include(w => w.Products.Select(p => p.Category))
+                                      .Include(w => w.User)
+                                      .FirstOrDefault(w => w.Id == id && w.User.Id.Equals(ownerId));
         }
     }
 }

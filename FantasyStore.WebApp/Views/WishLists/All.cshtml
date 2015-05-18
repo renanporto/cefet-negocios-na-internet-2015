@@ -3,15 +3,15 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Minhas listas de desejo</h2>
+<h2>Minhas listas de desejos</h2>
 <hr />
 
 @if (ViewBag.WishLists == null)
 {
-    <div class="alert alert-info">
+    <div class="alert alert-info" style="width: 500px">
         <p>
-            Você ainda não possui nenhuma lista de desejo cadastrada. <br />
-            <a href="/WishLists/Create">Clique aqui</a> para criar sua primeira lista!
+            Você ainda não possui nenhuma lista de desejos cadastrada. <br />
+            <strong><a href="/WishLists/Create">Clique aqui</a></strong> para criar sua primeira lista!
         </p>
     </div>
 }

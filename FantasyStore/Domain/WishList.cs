@@ -18,6 +18,7 @@ namespace FantasyStore.Domain
         public string Code { get; set; }
         public string Name { get; set; }
         public User User { get; set; }
+        public DateTime CreatedAt { get; set; }
         public ICollection<Product> Products
         {
             get { return _products ?? (_products = new List<Product>()); }
