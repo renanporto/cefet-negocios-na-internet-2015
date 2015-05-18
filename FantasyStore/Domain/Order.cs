@@ -17,6 +17,8 @@ namespace FantasyStore.Domain
         public DateTime CreatedAt { get; set; }
 
         public string Status { get; set; }
+
+        public long OrderNumber { get; set; }
     }
 
     public class Item

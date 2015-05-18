@@ -117,9 +117,9 @@
     <Compile Include="Infrastructure\Repositories\ProductRepository.cs" />
     <Compile Include="Infrastructure\Repositories\UserRepository.cs" />
     <Compile Include="Infrastructure\UnitOfWork.cs" />
-    <Compile Include="Migrations\201505172302122_cart2323ddd.cs" />
-    <Compile Include="Migrations\201505172302122_cart2323ddd.Designer.cs">
-      <DependentUpon>201505172302122_cart2323ddd.cs</DependentUpon>
+    <Compile Include="Migrations\201505180150306_cart2323dddd.cs" />
+    <Compile Include="Migrations\201505180150306_cart2323dddd.Designer.cs">
+      <DependentUpon>201505180150306_cart2323dddd.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -130,8 +130,8 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201505172302122_cart2323ddd.resx">
-      <DependentUpon>201505172302122_cart2323ddd.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201505180150306_cart2323dddd.resx">
+      <DependentUpon>201505180150306_cart2323dddd.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

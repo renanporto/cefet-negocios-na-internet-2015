@@ -145,7 +145,9 @@ namespace FantasyStore.WebApp.Controllers
 
             _unitOfWork.Addresses.Insert(address);
             _unitOfWork.Commit();
-
+            ModelState.Clear();
+            @ViewBag.Message = @"<div class='alert alert-success'>Endereço cadastrado com sucesso. 
+                <strong><a href='/Checkout/Cart'>Voltar ao carrinho de compras</a></strong></div>";
             return View();
         }
 

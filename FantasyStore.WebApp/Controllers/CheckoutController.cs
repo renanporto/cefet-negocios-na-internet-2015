@@ -1,12 +1,14 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Data.Odbc;
 using System.Globalization;
 using System.Linq;
 using System.Web.Mvc;
 using FantasyStore.Domain;
 using FantasyStore.Infrastructure;
 using FantasyStore.Migrations;
+using FantasyStore.Services;
 using FantasyStore.WebApp.Extensions;
 using FantasyStore.WebApp.ViewModels;
 using Microsoft.AspNet.Identity;
@@ -147,6 +149,36 @@ namespace FantasyStore.WebApp.Controllers
             return View();
         }
 
+        [HttpGet]
+        public ActionResult OrderFinished()
+        {
+            var user = _unitOfWork.Users.Get(User.Identity.GetUserId());
+
+            var order = user.Orders.OrderByDescending(o => o.Id).FirstOrDefault();
+
+            ViewBag.OrderInfo = order;
+
+            return View();
+        }
+
+        private void SendEmailMessage(Order order)
+        {
+            var itens = order.Cart.Items.Select(i => i.Product.Name);
+
+            var joinedNames = string.Join(", ", itens);
+
+            const string messageTemplate = @"<p>Número do pedido: {0}</p>
+                                    <p>Status do pedido: {1}</p>
+                                    <p>Data de solicitação: {2}</p>
+                                    <p>Solicitante: {3}</p>
+                                    <p>Itens: {4}</p>";
+
+            var body = string.Format(messageTemplate, order.OrderNumber, order.Status, order.CreatedAt.ToString("dd/MM/yyyy hh:mm:ss"),
+                string.Format("{0} {1}", order.Owner.FirstName, order.Owner.LastName), joinedNames);
+
+            EmailService.Send("Confirmação do pedido - Fantasy Store", body, order.Owner.UserName);
+        }
+
         [HttpPost]
         public ActionResult Payment(PaymentViewModel model)
         {
@@ -165,21 +197,22 @@ namespace FantasyStore.WebApp.Controllers
                 InstallmentValue = installmentValue,
                 Name = model.Name
             };
-
+            var number = DateTime.UtcNow.Ticks / 10000;
             var order = new Order
             {
                 Cart = cart,
                 CreatedAt = DateTime.UtcNow,
                 Owner = user,
-                Status = "Pendente"
+                Status = "Pendente",
+                OrderNumber = number
             };
 
             _unitOfWork.Payments.Save(payment);
             _unitOfWork.Orders.Save(order);
             _unitOfWork.Commit();
-            var installmentList = GetInstallmentListFormatted(cart.Total);
-            ViewBag.installment = installmentList;
-            return View();
+
+            SendEmailMessage(order);
+            return RedirectToAction("OrderFinished", "Checkout");
         }
             
 

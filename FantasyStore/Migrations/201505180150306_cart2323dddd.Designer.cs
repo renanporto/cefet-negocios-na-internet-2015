@@ -7,13 +7,13 @@ namespace FantasyStore.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.1.3-40302")]
-    public sealed partial class cart2323ddd : IMigrationMetadata
+    public sealed partial class cart2323dddd : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(cart2323ddd));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(cart2323dddd));
         
         string IMigrationMetadata.Id
         {
-            get { return "201505172302122_cart2323ddd"; }
+            get { return "201505180150306_cart2323dddd"; }
         }
         
         string IMigrationMetadata.Source

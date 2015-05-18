@@ -1,0 +1,16 @@
+﻿
+@{
+    ViewBag.Title = "OrderFinished";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Finalização do pedido</h2>
+<hr/>
+<div class="alert alert-success">
+    <p style="font-size: 13pt">
+        Parabéns! Seu pedido foi registrado com sucesso. <br />
+        Para o acompanhamento, guarde este número: <strong>@ViewBag.OrderInfo.OrderNumber</strong> <br />
+        e consulte as informações do pedido na sessão de <strong><a href="/Orders/Tracking">rastreamento de pedidos</a></strong>.<br/>
+        Além disso, enviamos um email para @ViewBag.Email com os dados do pedido.
+    </p>
+</div>
