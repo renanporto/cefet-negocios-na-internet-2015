@@ -28,7 +28,9 @@ namespace FantasyStore.Infrastructure.Repositories
 
         public IEnumerable<Order> GetByOwner(string ownerId)
         {
-            return _context.Orders.Where(o => o.Owner.Id == ownerId);
+            return _context.Orders.Include(o => o.Cart.Items.Select(i => i.Product.Images))
+                            .Include(o => o.Owner)
+                            .Include(o => o.Cart.Items.Select(i => i.Product.Category)).Where(o => o.Owner.Id == ownerId);
         }
 
         public void Save(Order order)

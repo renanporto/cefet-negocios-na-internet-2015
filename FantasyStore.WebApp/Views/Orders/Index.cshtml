@@ -1,0 +1,19 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Minhas compras</h2>
+<hr/>
+
+@if (ViewBag.Orders == null)
+{
+    <div class="alert alert-info">Você ainda não fez nenhum pedido com a gente. 
+        <a href="/Home">Clique aqui</a> para escolher produtos.</div>
+}
+else
+{
+    @Html.Raw(@ViewBag.Orders);
+}
+

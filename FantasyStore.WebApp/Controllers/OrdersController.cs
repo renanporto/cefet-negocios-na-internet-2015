@@ -1,10 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text;
 using System.Web;
 using System.Web.Mvc;
 using FantasyStore.Domain;
 using FantasyStore.Infrastructure;
+using Microsoft.AspNet.Identity;
 
 namespace FantasyStore.WebApp.Controllers
 {
@@ -34,7 +36,7 @@ namespace FantasyStore.WebApp.Controllers
                                 <td>{1}</td>
                                 <td>{2}</td>
                                 <td>{3}</td>
-                                <td>{4}</td>
+                                <td>R$ {4}</td>
                             </tr>";
 
                 return string.Format(row, productTag, i.Product.Category.Name, 
@@ -46,7 +48,7 @@ namespace FantasyStore.WebApp.Controllers
                                             Data de solicitação: <strong>{1}</strong> <br/>
                                             Solicitante: <strong>{2}</strong> <br/>
                                             Status: <strong>{3}</strong> <br/>
-                                            Total: <strong>{4}</strong> <br/>
+                                            Total: <strong>R$ {4}</strong> <br/>
                                      </div>
                                 <table class='table table-bordered table-hover table-striped'>
                                     <tr>
@@ -57,8 +59,7 @@ namespace FantasyStore.WebApp.Controllers
                                         <th>Preço</th>  
                                     </tr>
                                     {5}
-                                </table>
-                            </div>";
+                                </table>";
             var owner = string.Format("{0} {1}", order.Owner.FirstName, order.Owner.LastName);
             return string.Format(template, order.OrderNumber,
                 order.CreatedAt.ToString("dd/MM/yyyy hh:mm:ss"), owner, order.Status, 
@@ -85,6 +86,21 @@ namespace FantasyStore.WebApp.Controllers
             return Json(html, JsonRequestBehavior.AllowGet);
         }
 
+        [HttpGet]
+        public ActionResult Index()
+        {
+            var orders = _unitOfWork.Orders.GetByOwner(User.Identity.GetUserId());
+            var result = new StringBuilder();
 
+            foreach (var order in orders)
+            {
+                var html = GenerateHtml(order);
+                result.Append(html);
+                result.Append("<hr/>");
+            }
+
+            ViewBag.Orders = result;
+            return View();
+        }
     }
 }
