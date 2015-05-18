@@ -13,17 +13,11 @@ namespace FantasyStore.Domain
             
         }
 
-        public WishList(int id, Guid code, ICollection<Product> products)
-        {
-            Id = id;
-            Code = code;
-            Products = products;
-        }
-
         private ICollection<Product> _products; 
         public int Id { get; set; }
-        public Guid Code { get; set; }
-
+        public string Code { get; set; }
+        public string Name { get; set; }
+        public User User { get; set; }
         public ICollection<Product> Products
         {
             get { return _products ?? (_products = new List<Product>()); }

@@ -17,6 +17,15 @@ namespace FantasyStore.Infrastructure
         private ItemRepository _items;
         private UserRepository _users;
         private PaymentRepository _payments;
+        private WishListRepository _wishLists;
+
+        public WishListRepository WishLists
+        {
+            get
+            {
+                return _wishLists ?? (_wishLists = new WishListRepository(_context));
+            }
+        }
 
         public ItemRepository Items
         {

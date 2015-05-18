@@ -11,6 +11,15 @@
             font-weight: bolder;
             font-size: 40pt;
         }
+
+        footer {
+            background-color: lightgray;
+            height: 70px;
+            margin-top: 500px;
+            width: 100%;
+            border: 1px solid grey;
+            border-radius: 3px;
+        }
     </style>
     @model FantasyStore.WebApp.ViewModels.SearchViewModel
     @Styles.Render("~/Content/css")
@@ -47,7 +56,7 @@
         <nav class="navbar navbar-default">
             <div class="container-fluid">
                 <div class="navbar-header">
-                    <a class="navbar-brand" href="/Home">Home</a>
+                    <a class="navbar-brand" href="/Home">Página inicial</a>
                 </div>
                 <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                     <ul class="nav navbar-nav">
@@ -100,7 +109,7 @@
                             <ul class="dropdown-menu" role="menu">
                                 <li><a href="/Auth/MyAccount">Meu cadastro</a></li>
                                 <li><a href="/Orders">Minhas compras</a></li>
-                                <li><a href="#">Lista de desejos</a></li>
+                                <li><a href="/WishLists">Lista de desejos</a></li>
                             </ul>
                         </li>
                     </ul>
@@ -113,5 +122,8 @@
 
         <script src="~/Js/buy-button.js"></script>
     </div>
+    <footer>
+        <p style="margin-left:500px; font-size: 10pt;">Desenvolvido por Renan Porto</p>
+    </footer>
 </body>
 </html>

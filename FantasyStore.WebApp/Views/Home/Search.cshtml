@@ -1,5 +1,4 @@
-﻿
-@{
+﻿@{
     ViewBag.Title = "Search";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
@@ -10,9 +9,11 @@
         height: 220px;
     }
 </style>
-<h2>Resultados de busca</h2> <br/>
+<h2>Resultados de busca</h2> <br />
+
 @if (@ViewBag.SearchResult != null)
 {
+
     foreach (var product in @ViewBag.SearchResult)
     {
         <div class="col-md-3 product-wrapper">
@@ -35,7 +36,9 @@
                     <br />
                 </p>
             </div>
+            <br /><br />
         </div>
+
     }
 }
 else

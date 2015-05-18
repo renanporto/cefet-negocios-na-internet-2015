@@ -1,0 +1,15 @@
+﻿
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@model FantasyStore.WebApp.ViewModels.WishListViewModel
+<h2>Criar nova lista</h2>
+<hr/>
+@Html.Raw(@ViewBag.Message)
+@using (Html.BeginForm())
+{
+    <label>Nome da lista</label><br/>
+    @Html.TextBoxFor(m => m.Name, new {@class="form-control", @style="width:300px;"})<br/><br />
+    <button class="btn btn-primary" type="submit">Criar lista</button>
+}

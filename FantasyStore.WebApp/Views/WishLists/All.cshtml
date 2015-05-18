@@ -1,0 +1,39 @@
+﻿@{
+    ViewBag.Title = "All";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Minhas listas de desejo</h2>
+<hr />
+
+@if (ViewBag.WishLists == null)
+{
+    <div class="alert alert-info">
+        <p>
+            Você ainda não possui nenhuma lista de desejo cadastrada. <br />
+            <a href="/WishLists/Create">Clique aqui</a> para criar sua primeira lista!
+        </p>
+    </div>
+}
+else
+{
+    <table class="table table-striped table-hover">
+        <tr>
+            <th>Código da lista</th>
+            <th>Nome da lista</th>
+            <th>Ação</th>
+        </tr>
+
+        @foreach (var wishList in ViewBag.WishLists)
+        {
+            <tr>
+                <td>  @wishList.Code</td>
+                <td>@wishList.Name</td>
+                <td><a href="/WishLists/Details/@wishList.Id">Ver detalhes</a></td>
+            </tr>
+        }
+    </table>
+}
+
+
+

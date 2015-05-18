@@ -175,6 +175,9 @@
     <Content Include="Views\Checkout\OrderFinished.cshtml" />
     <Content Include="Views\Orders\Tracking.cshtml" />
     <Content Include="Views\Orders\Index.cshtml" />
+    <Content Include="Views\WishLists\Index.cshtml" />
+    <Content Include="Views\WishLists\All.cshtml" />
+    <Content Include="Views\WishLists\Create.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -223,6 +226,7 @@
     <Compile Include="Controllers\CheckoutController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\OrdersController.cs" />
+    <Compile Include="Controllers\WishListsController.cs" />
     <Compile Include="Extensions\ViewModelExtensions.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -239,6 +243,7 @@
     <Compile Include="ViewModels\SearchViewModel.cs" />
     <Compile Include="ViewModels\UpdateModel.cs" />
     <Compile Include="ViewModels\RegisterModel.cs" />
+    <Compile Include="ViewModels\WishListViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
