@@ -173,7 +173,7 @@
     <Content Include="Views\Checkout\Payment.cshtml" />
     <Content Include="Views\Auth\CreateAddress.cshtml" />
     <Content Include="Views\Checkout\OrderFinished.cshtml" />
-    <Content Include="Views\Order\Tracking.cshtml" />
+    <Content Include="Views\Orders\Tracking.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -221,7 +221,7 @@
     <Compile Include="Controllers\AuthController.cs" />
     <Compile Include="Controllers\CheckoutController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
-    <Compile Include="Controllers\OrderController.cs" />
+    <Compile Include="Controllers\OrdersController.cs" />
     <Compile Include="Extensions\ViewModelExtensions.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>

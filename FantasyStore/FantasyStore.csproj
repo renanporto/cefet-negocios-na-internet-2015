@@ -117,14 +117,6 @@
     <Compile Include="Infrastructure\Repositories\ProductRepository.cs" />
     <Compile Include="Infrastructure\Repositories\UserRepository.cs" />
     <Compile Include="Infrastructure\UnitOfWork.cs" />
-    <Compile Include="Migrations\201505180150306_cart2323dddd.cs" />
-    <Compile Include="Migrations\201505180150306_cart2323dddd.Designer.cs">
-      <DependentUpon>201505180150306_cart2323dddd.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201505180441055_cart232354.cs" />
-    <Compile Include="Migrations\201505180441055_cart232354.Designer.cs">
-      <DependentUpon>201505180441055_cart232354.cs</DependentUpon>
-    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\EmailService.cs" />
@@ -132,14 +124,6 @@
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Migrations\201505180150306_cart2323dddd.resx">
-      <DependentUpon>201505180150306_cart2323dddd.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201505180441055_cart232354.resx">
-      <DependentUpon>201505180441055_cart232354.cs</DependentUpon>
-    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

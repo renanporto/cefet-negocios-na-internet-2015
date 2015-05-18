@@ -84,17 +84,22 @@ namespace FantasyStore.WebApp.Controllers
             }
             else
             {
-                var hasDeliveryAddress = user.Addresses.Any(a => a.IsDeliveryAddress);
-                if (!hasDeliveryAddress)
+                if (user != null)
                 {
-                    const string message = @"<div class='alert alert-info'>Atenção. Você ainda não possui um endereço de entrega cadastrado. 
+                    var hasDeliveryAddress = user.Addresses.Any(a => a.IsDeliveryAddress);
+                    if (!hasDeliveryAddress)
+                    {
+                        const string message =
+                            @"<div class='alert alert-info'>Atenção. Você ainda não possui um endereço de entrega cadastrado. 
                                 <a href='/Auth/CreateAddress'>Clique aqui para cadastrar </a></div>";
-                    @ViewBag.Message = message;
-                    @ViewBag.Disabled = "disabled";
+                        @ViewBag.Message = message;
+                        @ViewBag.Disabled = "disabled";
+                    }
                 }
 
                 var code = session.ToString();
                 var userId = User.Identity.GetUserId();
+
                 var cart = userId == null ? _unitOfWork.Carts.GetCart(code) : _unitOfWork.Carts.GetUserCart(userId);
                 if (cart == null)
                 {

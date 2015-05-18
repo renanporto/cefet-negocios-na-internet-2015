@@ -3,7 +3,7 @@ var TrackingClient = (function () {
     function trackingClient() { }
 
     trackingClient.prototype.search = function (orderNumber) {
-        var serviceUrl = "http://localhost:26722/Order/Search/?orderNumber=" + orderNumber;
+        var serviceUrl = "http://localhost:26722/Orders/Search/?orderNumber=" + orderNumber;
 
         var ajaxConfig = {
             url: serviceUrl,

@@ -9,16 +9,26 @@ using FantasyStore.Infrastructure;
 using FantasyStore.Services;
 using FantasyStore.WebApp.Extensions;
 using FantasyStore.WebApp.ViewModels;
+using Microsoft.AspNet.Identity;
 
 namespace FantasyStore.WebApp.Controllers
 {
     [AllowAnonymous]
     public class HomeController : AppController
     {
-        private readonly UnitOfWork unitOfWork = new UnitOfWork();
+        private readonly UnitOfWork _unitOfWork = new UnitOfWork();
         // GET: Home
         public ActionResult Index()
         {
+            var cartCode = Session["CartId"];
+            if (cartCode == null || User.Identity.GetUserId() == null) return View();
+
+            var cart = _unitOfWork.Carts.GetCart(cartCode.ToString());
+            if (cart.User != null) return View();
+
+            cart.User = _unitOfWork.Users.Get(User.Identity.GetUserId());
+            _unitOfWork.Carts.Update(cart);
+            _unitOfWork.Commit();
             return View();
         }
 
@@ -60,7 +70,7 @@ namespace FantasyStore.WebApp.Controllers
         [HttpGet]
         public PartialViewResult _Section1()
         {
-            var products = unitOfWork.Products.GetByCollection(1);
+            var products = _unitOfWork.Products.GetByCollection(1);
             var model = products.Select(p => p.ToProductViewModel()).ToList();
             return PartialView(model);
         }
@@ -68,7 +78,7 @@ namespace FantasyStore.WebApp.Controllers
         [HttpGet]
         public PartialViewResult _Section2()
         {
-            var products = unitOfWork.Products.GetByCollection(2);
+            var products = _unitOfWork.Products.GetByCollection(2);
             var model = products.Select(p => p.ToProductViewModel()).ToList();
             return PartialView(model);
         }
@@ -76,7 +86,7 @@ namespace FantasyStore.WebApp.Controllers
         [HttpGet]
         public PartialViewResult _Section3()
         {
-            var products = unitOfWork.Products.GetByCategory("Infantil");
+            var products = _unitOfWork.Products.GetByCategory("Infantil");
             var model = products.Select(p => p.ToProductViewModel()).ToList();
             return PartialView(model);
         }
@@ -121,7 +131,7 @@ namespace FantasyStore.WebApp.Controllers
                         try
                         {
                             var id = Convert.ToInt32(model.Term);
-                            var product = unitOfWork.Products.Get(id);
+                            var product = _unitOfWork.Products.Get(id);
                             if (product == null)
                             {
                                 ViewBag.NotFoundMessage = string.Format("Nenhum produto encontrado com o código {0}", model.Term);
@@ -143,7 +153,7 @@ namespace FantasyStore.WebApp.Controllers
                     {
                         try
                         {
-                            var products = unitOfWork.Products.GetByName(model.Term);
+                            var products = _unitOfWork.Products.GetByName(model.Term);
                             if (!products.Any())
                             {
                                 ViewBag.NotFoundMessage = string.Format("Nenhum produto encontrado com o nome {0}", model.Term);
@@ -163,7 +173,7 @@ namespace FantasyStore.WebApp.Controllers
                         try
                         {
                             var tuple = ExtractPrices(model.Term);
-                            var products = unitOfWork.Products.GetByPriceRange(tuple.Item1, tuple.Item2);
+                            var products = _unitOfWork.Products.GetByPriceRange(tuple.Item1, tuple.Item2);
                             if (!products.Any())
                             {
                                 ViewBag.NotFoundMessage = string.Format("Nenhum produto encontrado com a faixa de preço {0}", model.Term);
@@ -186,7 +196,7 @@ namespace FantasyStore.WebApp.Controllers
         [HttpGet]
         public ActionResult Category(int id)
         {
-            var products = unitOfWork.Products.GetByCategoryId(id);
+            var products = _unitOfWork.Products.GetByCategoryId(id);
             ViewBag.CategoryName = products.Select(p => p.Category.Name).First();
             var result = products.Select(p => p.ToProductViewModel());
             ViewBag.Products = result;

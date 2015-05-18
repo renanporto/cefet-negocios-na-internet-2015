@@ -238,6 +238,11 @@ namespace FantasyStore.WebApp.Controllers
         {
             var ctx = Request.GetOwinContext();
             var authManager = ctx.Authentication;
+            var session = Session["CartId"];
+            if (session != null)
+            {
+                Session.Clear();
+            }
 
             authManager.SignOut("ApplicationCookie");
             return RedirectToAction("index", "home");

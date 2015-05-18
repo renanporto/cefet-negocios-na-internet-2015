@@ -9,7 +9,7 @@ using FantasyStore.Infrastructure;
 namespace FantasyStore.WebApp.Controllers
 {
     [AllowAnonymous]
-    public class OrderController : Controller
+    public class OrdersController : Controller
     {
         private readonly UnitOfWork _unitOfWork = new UnitOfWork();
         // GET: Order
@@ -42,11 +42,11 @@ namespace FantasyStore.WebApp.Controllers
             });
             var rowsTemplate = string.Join(string.Empty, rows);
             const string template = @"<div class='alert alert-info'>
-                                            Número do pedido: {0} <br/>
-                                            Data de solicitação: {1} <br/>
-                                            Solicitante: {2} <br/>
-                                            Status: {3} <br/>
-                                            Total: {4} <br/>
+                                            Número do pedido: <strong>{0}</strong> <br/>
+                                            Data de solicitação: <strong>{1}</strong> <br/>
+                                            Solicitante: <strong>{2}</strong> <br/>
+                                            Status: <strong>{3}</strong> <br/>
+                                            Total: <strong>{4}</strong> <br/>
                                      </div>
                                 <table class='table table-bordered table-hover table-striped'>
                                     <tr>
@@ -61,7 +61,8 @@ namespace FantasyStore.WebApp.Controllers
                             </div>";
             var owner = string.Format("{0} {1}", order.Owner.FirstName, order.Owner.LastName);
             return string.Format(template, order.OrderNumber,
-                order.CreatedAt.ToString("dd/MM/yyyy hh:mm:ss"), owner, order.Status, order.Cart.Total.ToString().Replace(".", ","), rowsTemplate);
+                order.CreatedAt.ToString("dd/MM/yyyy hh:mm:ss"), owner, order.Status, 
+                order.Cart.Total.ToString().Replace(".", ","), rowsTemplate);
         }
 
         [HttpGet]
