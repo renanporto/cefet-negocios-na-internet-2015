@@ -150,7 +150,7 @@
     <Content Include="css\style.css" />
     <Content Include="Js\buy-button.js" />
     <Content Include="Js\checkout.js" />
-    <Content Include="Js\order.js" />
+    <Content Include="Js\tracking.js" />
     <Content Include="Scripts\vex.combined.min.js" />
     <Content Include="Scripts\vex.dialog.js" />
     <Content Include="Views\Shared\Error.cshtml" />
@@ -173,6 +173,7 @@
     <Content Include="Views\Checkout\Payment.cshtml" />
     <Content Include="Views\Auth\CreateAddress.cshtml" />
     <Content Include="Views\Checkout\OrderFinished.cshtml" />
+    <Content Include="Views\Order\Tracking.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -242,7 +243,6 @@
     <Folder Include="App_Data\" />
     <Folder Include="Pages\" />
     <Folder Include="Views\App\" />
-    <Folder Include="Views\Order\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\FantasyStore\FantasyStore.csproj">

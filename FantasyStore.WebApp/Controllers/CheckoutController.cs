@@ -171,10 +171,11 @@ namespace FantasyStore.WebApp.Controllers
                                     <p>Status do pedido: {1}</p>
                                     <p>Data de solicitação: {2}</p>
                                     <p>Solicitante: {3}</p>
-                                    <p>Itens: {4}</p>";
+                                    <p>Itens: {4}</p>
+                                    <p>Total: {5}</p>";
 
             var body = string.Format(messageTemplate, order.OrderNumber, order.Status, order.CreatedAt.ToString("dd/MM/yyyy hh:mm:ss"),
-                string.Format("{0} {1}", order.Owner.FirstName, order.Owner.LastName), joinedNames);
+                string.Format("{0} {1}", order.Owner.FirstName, order.Owner.LastName), joinedNames, order.Cart.Total);
 
             EmailService.Send("Confirmação do pedido - Fantasy Store", body, order.Owner.UserName);
         }

@@ -36,6 +36,13 @@ namespace FantasyStore.Infrastructure.Repositories
             _context.Orders.Add(order);
         }
 
-        
+
+        public Order GetByNumber(long number)
+        {
+            return _context.Orders.Include(o => o.Cart.Items.Select(i => i.Product.Images))
+                            .Include(o => o.Owner)
+                            .Include(o => o.Cart.Items.Select(i => i.Product.Category))
+                            .FirstOrDefault(o => o.OrderNumber == number);
+        }
     }
 }

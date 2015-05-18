@@ -10,9 +10,8 @@ namespace FantasyStore.Domain
     {
         public Product()
         {
-
+            
         }
-
         public Product(int id, string name, decimal? price, string ean, int amountInStock)
         {
             Id = id;
@@ -32,7 +31,7 @@ namespace FantasyStore.Domain
         public string Ean { get; set; }
         public Category Category { get; set; }
         public int AmountInStock { get; set; }
-
+        public string Description { get; set; }
         public ICollection<WishList> WishLists
         {
             get { return _wishLists ?? (_wishLists = new List<WishList>()); }

@@ -23,11 +23,11 @@
         @if (CurrentUser != null)
         {
             <div style="height:30px;">
-                <a href="/Checkout/Cart" style="position:absolute">
+                <a href="/Checkout/Cart" style="position:absolute; margin-top:-4px;">
                     <img src="~/Content/Images/logo-minicart.jpg" style="width: 30px; height: 30px; margin-left:610px; margin-right:10px;" />
                     Meu carrinho
                 </a>
-                <span style="color: cadetblue; margin-left: 750px;">Bem-vindo, <strong>@CurrentUser.FirstName @CurrentUser.LastName</strong> </span>
+                <span style="color: cadetblue; margin-left: 750px; margin-top:-4px;">Bem-vindo, <strong>@CurrentUser.FirstName @CurrentUser.LastName</strong> </span>
                 <span style="color: darkslategrey; margin-left: 50px; font-weight: bold;"><a href="/Auth/LogOut">Sair</a></span>
             </div>
         }
