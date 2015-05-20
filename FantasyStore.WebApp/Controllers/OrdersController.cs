@@ -6,6 +6,7 @@ using System.Web;
 using System.Web.Mvc;
 using FantasyStore.Domain;
 using FantasyStore.Infrastructure;
+using FantasyStore.WebApp.Util;
 using Microsoft.AspNet.Identity;
 
 namespace FantasyStore.WebApp.Controllers
@@ -21,7 +22,7 @@ namespace FantasyStore.WebApp.Controllers
             return View();
         }
 
-        private static string GenerateHtml(Order order)
+        private string GenerateHtml(Order order)
         {
             var items = order.Cart.Items;
 
@@ -48,7 +49,8 @@ namespace FantasyStore.WebApp.Controllers
                                             Data de solicitação: <strong>{1}</strong> <br/>
                                             Solicitante: <strong>{2}</strong> <br/>
                                             Status: <strong>{3}</strong> <br/>
-                                            Total: <strong>R$ {4}</strong> <br/>
+                                            Forma de pagamento: <strong>{4}</strong><br/>
+                                            Total: <strong>R$ {5}</strong> <br/>
                                      </div>
                                 <table class='table table-bordered table-hover table-striped'>
                                     <tr>
@@ -58,12 +60,16 @@ namespace FantasyStore.WebApp.Controllers
                                         <th>Quantidade</th>
                                         <th>Preço</th>  
                                     </tr>
-                                    {5}
+                                    {6}
                                 </table>";
+            var payment = _unitOfWork.Payments.GetByCartId(order.Cart.Id);
+            var paymentDetails = payment.Installment == 1 ? string.Format("R$ {0} à vista", payment.InstallmentValue) 
+                                    : string.Format("{0}x de  R$ {1}", payment.Installment, payment.InstallmentValue.ToString().Replace(".", ","));
             var owner = string.Format("{0} {1}", order.Owner.FirstName, order.Owner.LastName);
+            var date = order.CreatedAt.ConvertFromUtc();
             return string.Format(template, order.OrderNumber,
-                order.CreatedAt.ToString("dd/MM/yyyy hh:mm:ss"), owner, order.Status, 
-                order.Cart.Total.ToString().Replace(".", ","), rowsTemplate);
+                date.ToString("dd/MM/yyyy hh:mm:ss"), owner, order.Status, 
+                paymentDetails, order.Cart.Total.ToString().Replace(".", ","), rowsTemplate);
         }
 
         [HttpGet]

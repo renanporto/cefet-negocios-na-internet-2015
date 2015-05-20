@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.Mvc;
 using FantasyStore.Domain;
 using FantasyStore.Infrastructure;
+using FantasyStore.WebApp.Util;
 using FantasyStore.WebApp.ViewModels;
 using Microsoft.AspNet.Identity;
 
@@ -65,7 +66,7 @@ namespace FantasyStore.WebApp.Controllers
             }
 
             @ViewBag.WishList = wishList;
-            @ViewBag.CreatedAt = wishList.CreatedAt.ToString("dd/MM/yyyy hh:mm:ss");
+            @ViewBag.CreatedAt = wishList.CreatedAt.ConvertFromUtc().ToString("dd/MM/yyyy hh:mm:ss");
             @ViewBag.Products = wishList.Products.Any() ? wishList.Products : null;
             return View();
         }

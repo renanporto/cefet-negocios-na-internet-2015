@@ -17,13 +17,13 @@
     foreach (var product in @ViewBag.SearchResult)
     {
         <div class="col-md-3 product-wrapper">
-            <a href="#">
+            <a href="/Home/Products/@product.Id">
                 <img src="@product.ImageUrl" alt="@product.ImageName" />
             </a>
             <div class="product-info">
                 <p>
-                    <a href="#"><span class="product-name">@product.Name</span></a>
-                    <a href="#"><span class="glyphicon glyphicon-plus" aria-hidden="true" style="margin-left: 6px;"></span></a>
+                    <a href="/Home/Products/@product.Id"><span class="product-name">@product.Name</span></a>
+                    <a href="/Home/Products/@product.Id"><span class="glyphicon glyphicon-plus" aria-hidden="true" style="margin-left: 6px;"></span></a>
                     <br />
                     <span class="price-from">De: R$ @product.PriceFrom</span>
                     <br />

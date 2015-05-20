@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Text.RegularExpressions;
 using System.Web;
@@ -201,6 +202,43 @@ namespace FantasyStore.WebApp.Controllers
             var result = products.Select(p => p.ToProductViewModel());
             ViewBag.Products = result;
             return View();
+        }
+
+
+        [HttpGet]
+        public ActionResult Products(int id)
+        {
+            var product = _unitOfWork.Products.Get(id);
+            
+            ViewBag.ImageUrl = product.Images.FirstOrDefault().Url;
+            ViewBag.Name = product.Name;
+            ViewBag.Id = product.Id;
+            ViewBag.Category = product.Category.Name;
+            ViewBag.Price = (product.Price).ToString().Replace(".", ",");
+            ViewBag.OldPrice = (product.Price + 40).ToString().Replace(".", ",");
+            ViewBag.ProductId = product.Id;
+
+            var installmentOptions = GetInstallmentOptions(product);
+
+            ViewBag.InstallmentOptions = installmentOptions;
+
+            return View();
+        }
+
+        private List<string> GetInstallmentOptions(Product product)
+        {
+            var price = product.Price;
+            var result = new List<string>();
+            for (var i = 1; i <= 6; i++)
+            {
+                var value = decimal.Round((price / i).GetValueOrDefault(), 2)
+                    .ToString(CultureInfo.InvariantCulture).Replace(".", ",");
+                var str = i == 1
+                    ? string.Format("R$ {0} à vista", value)
+                    : string.Format("{0}x de R$ {1} sem juros", i, value);
+                result.Add(str);
+            }
+            return result;
         }
     }
 }

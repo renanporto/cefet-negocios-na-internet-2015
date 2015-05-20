@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using FantasyStore.Domain;
 
 namespace FantasyStore.Infrastructure.Repositories
 {
@@ -14,5 +16,10 @@ namespace FantasyStore.Infrastructure.Repositories
             _context = context;
         }
 
+        public void Update(Item item)
+        {
+            _context.Items.Attach(item);
+            _context.Entry(item).State = EntityState.Modified;
+        }
     }
 }

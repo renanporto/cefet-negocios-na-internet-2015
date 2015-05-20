@@ -9,6 +9,7 @@
         width: 70px;
         height: 70px;
     }
+
     .total {
         font-weight: bold;
         color: green;
@@ -16,36 +17,39 @@
 </style>
 <script type="text/javascript" language="javascript" src="~/Js/checkout.js"></script>
 <h3>Meu carrinho</h3><hr />
-
+<input type="hidden" class="cartCode" value="@ViewBag.CartCode" />
 @if (@ViewBag.Flag == null)
 {
     @Html.Raw(@ViewBag.Message)
-    <table class="table table-striped table-bordered table-hover">
-        <tr>
-            <th>Produto</th>
-            <th>Preço</th>
-            <th>Quantidade</th>
-            <th></th>
-        </tr>
-        @foreach (var item in ViewBag.CartItems)
-        {
-            <tr class="table-row">
-                <td>
-                    <div>
-                        <img src="@item.ImageUrl" alt="@item.ImageUrl" />
-                        <strong>@item.ProductName </strong><br />
-                    </div>
-                </td>
-                <td><span class="current-price">@item.Price</span></td>
-                <td><input type="text" class="form-control txt-amount" value="@item.Amount" style="width:70px;" /></td>
-                <td><a href="#" data-productid="@item.ProductId" class="remove-item"><span class="glyphicon glyphicon-remove" aria-hidden="true" style="margin-top: 30px; color: red;"></span> </a></td>
+    <table class="table table-striped table-bordered table-hover items">
+        <tbody>
+            <tr>
+                <th>Produto</th>
+                <th>Preço</th>
+                <th>Quantidade</th>
+                <th></th>
             </tr>
-        }
+            @foreach (var item in ViewBag.CartItems)
+            {
+                <tr class="table-row">
+                    <td>
+                        <div>
+                            <input type="hidden" class="itemId" value="@item.Id" />
+                            <img src="@item.ImageUrl" alt="@item.ImageUrl" />
+                            <strong>@item.ProductName </strong><br />
+                        </div>
+                    </td>
+                    <td><span class="current-price">@item.Price</span></td>
+                    <td><input type="text" class="form-control txt-amount" value="@item.Amount" style="width:70px;" /></td>
+                    <td><a href="#" data-productid="@item.ProductId" class="remove-item"><span class="glyphicon glyphicon-remove" aria-hidden="true" style="margin-top: 30px; color: red;"></span> </a></td>
+                </tr>
+            }
+        </tbody>
     </table>
     <span style="margin-left:900px;">
         <span style="font-weight: bold; font-size: 13pt;">Total:</span> <span class="total"></span>
-    </span><br/><br />
-    <button class="btn btn-primary" onclick="location.href='/Checkout/Payment'" style="margin-left: 900px;" @ViewBag.Disabled>>> Prosseguir</button>
+    </span><br /><br />
+    <button class="btn btn-primary goto-payment" style="margin-left: 900px;" @ViewBag.Disabled>>> Prosseguir</button>
 }
 else
 {

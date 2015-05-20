@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -24,6 +25,11 @@ namespace FantasyStore.Infrastructure.Repositories
         public bool HasPayment(Cart cart)
         {
             return _context.Payments.Any(p => p.Cart.Id == cart.Id);
+        }
+
+        public Payment GetByCartId(int cartId)
+        {
+            return _context.Payments.FirstOrDefault(p => p.Cart.Id == cartId);
         }
     }
 }

@@ -1,0 +1,141 @@
+﻿@{
+    ViewBag.Title = "Products";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<style>
+    .product-detail {
+        height: 600px;
+        width: 100%;
+    }
+
+    .product-image {
+        height: 600px;
+    }
+
+    .product-data {
+        height: 600px;
+    }
+
+    .product-specificationss {
+        height: 500px;
+    }
+
+    .product-specifications > div {
+        height: 400px;
+    }
+
+    img {
+        height: 550px;
+        width: 550px;
+        margin-left: 10px;
+    }
+
+    .name {
+        font-family: Candara;
+        font-size: 35pt;
+        font-weight: bolder;
+    }
+
+    .buy-button-wrapper {
+        background-color: #F8F8FF;
+        height: 160px;
+        width: 550px;
+    }
+
+    div.buy-wrapper {
+        padding-left: 30px;
+        padding-top: 40px;
+    }
+
+    .product-price {
+        font-size: 25pt;
+        font-family: Candara;
+        color: red;
+        font-weight: bold;
+    }
+
+    .product-price-old {
+        color: lightslategray;
+    }
+</style>
+
+<div class="container">
+    <div class="row product-detail">
+        <div class="col-md-6 product-image">
+            <img src="@ViewBag.ImageUrl" />
+        </div>
+        <div class="col-md-6 product-data">
+            <strong class="name">
+                @ViewBag.Name - @ViewBag.Category
+            </strong><br />
+            <p style="font-size:10pt">Código: @ViewBag.Id</p><hr /><br />
+            <div class="form-inline buy-button-wrapper">
+                <div class="form-group form-inline buy-wrapper">
+                    <label for="exampleInputName2">Qntd.:</label>
+                    <input type="text" class="form-control qntd" id="exampleInputName2" style="width: 45px;">
+                </div>
+                <div class="form-group form-inline buy-wrapper">
+                    <strong class="product-price-old">De: @ViewBag.OldPrice</strong><br />
+                    <strong class="product-price">Por: R$ @ViewBag.Price</strong>
+                    <button class="btn btn-success" style="margin-left: 25px;">
+                        <span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span>
+                        <span style="font-family: Candara;font-size: 14pt;margin-left: 5px;" class="buy-button" data-productid="@ViewBag.ProductId"><strong>Comprar</strong></span>
+                    </button><br/>
+                    <button class="btn btn-danger btn-xs">
+                        <span class="glyphicon glyphicon-star-empty" aria-hidden="true"></span>
+                        <span style="margin-left: 5px;font-family: Candara; " class="buy-button" data-productid="6">Adicionar à lista de desejos</span>
+                    </button>
+                </div>
+            </div>
+            <br />
+            <div>
+                <strong style="font-family:Candara;">Opções de parcelamento</strong>
+                <hr />
+                <ul style="list-style: none; font-family: Candara; font-size: 13pt; margin-left: -25px;">
+                    @foreach (var option in @ViewBag.InstallmentOptions)
+                    {
+                        <li>@option</li>
+                    }
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="row product-specifications">
+
+        <div class="col-md-12">
+            <p>
+                <strong style="font-family: Candara; font-size: 14pt;">Características técnicas</strong>
+            </p>
+            <hr />
+            <div>
+                <table class="table table-hover table-striped table-bordered">
+                    <tr>
+                        <th>Especificação</th>
+                        <th>Valor</th>
+                    </tr>
+                    <tr>
+                        <td>Descrição</td>
+                        <td>Feminino</td>
+                    </tr>
+                    <tr>
+                        <td>Gênero</td>
+                        <td>Feminino</td>
+                    </tr>
+                    <tr>
+                        <td>Tamanhos</td>
+                        <td>G</td>
+                    </tr>
+                    <tr>
+                        <td>Composição</td>
+                        <td>G</td>
+                    </tr>
+                    <tr>
+                        <td>Itens inclusos</td>
+                        <td>G</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+
+    </div>
+</div>

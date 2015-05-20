@@ -46,7 +46,7 @@ namespace FantasyStore.Infrastructure.Repositories
             return result;
         }
 
-        public void Add(int productId)
+        public void Add(int productId, int quantity)
         {
             var userId = HttpContext.Current.User.Identity.GetUserId();
 
@@ -66,7 +66,7 @@ namespace FantasyStore.Infrastructure.Repositories
                     {
                         item = new Item
                         {
-                            Amount = 1,
+                            Amount = quantity,
                             Product = _context.Products.SingleOrDefault(p => p.Id == productId),
                             ProductId = productId
                         };
@@ -85,7 +85,7 @@ namespace FantasyStore.Infrastructure.Repositories
                     HttpContext.Current.Session.Timeout = 30;
                     var item = new Item
                     {
-                        Amount = 1,
+                        Amount = quantity,
                         Product = _context.Products.SingleOrDefault(p => p.Id == productId),
                         ProductId = productId
                     };
@@ -110,7 +110,7 @@ namespace FantasyStore.Infrastructure.Repositories
                     cart = new Cart { User = user, Code = Guid.NewGuid().ToString() };
                     var item = new Item
                     {
-                        Amount = 1,
+                        Amount = quantity,
                         Cart = cart,
                         ProductId = productId,
                         Product = _context.Products.FirstOrDefault(p => p.Id == productId)
@@ -131,7 +131,7 @@ namespace FantasyStore.Infrastructure.Repositories
                     {
                         item = new Item
                         {
-                            Amount = 1,
+                            Amount = quantity,
                             Cart = cart,
                             ProductId = productId,
                             Product = _context.Products.FirstOrDefault(p => p.Id == productId)
@@ -197,5 +197,17 @@ namespace FantasyStore.Infrastructure.Repositories
             cart.Total = GetTotal(cart.Items);
         }
 
+        public Cart GetByCode(string cartCode)
+        {
+            return _context.Carts.Include(c => c.Items)
+                .Include(c => c.Items.Select(i => i.Product))
+                .Include(c => c.User)
+                .FirstOrDefault(c => c.Code.Equals(cartCode));
+        }
+
+        public void UpdateCartTotal(Cart cart, Item item)
+        {
+            cart.Total = GetTotal(new List<Item>{item});
+        }
     }
 }

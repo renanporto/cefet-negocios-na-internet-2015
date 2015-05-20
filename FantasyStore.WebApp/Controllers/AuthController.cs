@@ -11,6 +11,8 @@ using FantasyStore.Infrastructure;
 using FantasyStore.WebApp.Extensions;
 using FantasyStore.WebApp.ViewModels;
 using Microsoft.AspNet.Identity;
+using Microsoft.AspNet.Identity.Owin;
+using Microsoft.Owin;
 using Microsoft.Owin.Security;
 
 namespace FantasyStore.WebApp.Controllers
@@ -247,5 +249,9 @@ namespace FantasyStore.WebApp.Controllers
             authManager.SignOut("ApplicationCookie");
             return RedirectToAction("index", "home");
         }
+
+      
     }
+
+    
 }

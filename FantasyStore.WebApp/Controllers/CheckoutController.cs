@@ -10,6 +10,7 @@ using FantasyStore.Infrastructure;
 using FantasyStore.Migrations;
 using FantasyStore.Services;
 using FantasyStore.WebApp.Extensions;
+using FantasyStore.WebApp.Util;
 using FantasyStore.WebApp.ViewModels;
 using Microsoft.AspNet.Identity;
 
@@ -26,11 +27,11 @@ namespace FantasyStore.WebApp.Controllers
         }
 
         [HttpGet]
-        public ActionResult Add(int productId)
+        public ActionResult Add(int productId, int quantity)
         {
             if (productId == 0) return View();
 
-            _unitOfWork.Carts.Add(productId);
+            _unitOfWork.Carts.Add(productId, quantity);
             _unitOfWork.Commit();
 
             return Json("Item adicionado com sucesso", JsonRequestBehavior.AllowGet);
@@ -80,6 +81,7 @@ namespace FantasyStore.WebApp.Controllers
 
                 var items = cart.Items.Select(i => i.ToCartItemViewModel());
                 ViewBag.CartItems = items;
+                ViewBag.CartCode = cart.Code;
                 return View();   
             }
             else
@@ -114,13 +116,14 @@ namespace FantasyStore.WebApp.Controllers
                 }
                 var items = cart.Items.Select(i => i.ToCartItemViewModel());
                 ViewBag.CartItems = items;
+                ViewBag.CartCode = cart.Code;
                 return View();   
             }
         }
 
         private SelectList GetInstallmentListFormatted(decimal? total)
         {
-            const int installmentMaxMultiplier = 10;
+            const int installmentMaxMultiplier = 6;
             var result = new List<SelectListItem>();
 
             for (var i = 1; i <= installmentMaxMultiplier; i++)
@@ -178,9 +181,9 @@ namespace FantasyStore.WebApp.Controllers
                                     <p>Solicitante: {3}</p>
                                     <p>Itens: {4}</p>
                                     <p>Total: {5}</p>";
-
-            var body = string.Format(messageTemplate, order.OrderNumber, order.Status, order.CreatedAt.ToString("dd/MM/yyyy hh:mm:ss"),
-                string.Format("{0} {1}", order.Owner.FirstName, order.Owner.LastName), joinedNames, order.Cart.Total);
+            var date = order.CreatedAt.ConvertFromUtc();
+            var body = string.Format(messageTemplate, order.OrderNumber, order.Status, date.ToString("dd/MM/yyyy hh:mm:ss"),
+                string.Format("{0} {1}", order.Owner.FirstName, order.Owner.LastName), joinedNames, order.Cart.Total.ToString().Replace(".", ","));
 
             EmailService.Send("Confirmação do pedido - Fantasy Store", body, order.Owner.UserName);
         }
@@ -220,7 +223,24 @@ namespace FantasyStore.WebApp.Controllers
             SendEmailMessage(order);
             return RedirectToAction("OrderFinished", "Checkout");
         }
-            
+
+
+        [HttpGet]
+        public ActionResult UpdateCart(string cartCode, int itemId, int quantity, decimal total)
+        {
+            var cart = _unitOfWork.Carts.GetByCode(cartCode);
+
+            var item = cart.Items.FirstOrDefault(i => i.Id == itemId);
+            if (item != null)
+            {
+                item.Amount = quantity;
+                _unitOfWork.Items.Update(item);
+            }
+            cart.Total = total;
+            _unitOfWork.Carts.Update(cart);
+            _unitOfWork.Commit();
+            return Json("Carrinho atualizado", JsonRequestBehavior.AllowGet);
+        }
 
 
 

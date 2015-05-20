@@ -18,7 +18,7 @@ namespace FantasyStore.Infrastructure.Repositories
 
         public Product Get(int id)
         {
-            return _context.Products.Include(p => p.Images).FirstOrDefault(p => p.Id == id);
+            return _context.Products.Include(p => p.Images).Include(p => p.Category).FirstOrDefault(p => p.Id == id);
         }
 
         public IEnumerable<Product> GetAll()
