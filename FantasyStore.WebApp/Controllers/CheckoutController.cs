@@ -192,7 +192,7 @@ namespace FantasyStore.WebApp.Controllers
         public ActionResult Payment(PaymentViewModel model)
         {
             var cart = _unitOfWork.Carts.GetUserCart(User.Identity.GetUserId());
-            var date = Convert.ToDateTime(model.ExpirationDate);
+            var date = Convert.ToDateTime(model.ExpirationDate, CultureInfo.GetCultureInfo("pt-BR"));
             var installmentValue = cart.Total/model.Installment;
             var user = _unitOfWork.Users.Get(User.Identity.GetUserId());
             var payment = new Payment
