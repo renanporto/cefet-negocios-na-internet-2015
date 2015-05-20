@@ -42,6 +42,11 @@
         width: 550px;
     }
 
+    .ddl-list {
+        width: 250px;
+        margin-left: 190px;
+    }
+
     div.buy-wrapper {
         padding-left: 30px;
         padding-top: 40px;
@@ -58,7 +63,7 @@
         color: lightslategray;
     }
 </style>
-
+<script src="~/Js/products.js"></script>
 <div class="container">
     <div class="row product-detail">
         <div class="col-md-6 product-image">
@@ -68,7 +73,7 @@
             <strong class="name">
                 @ViewBag.Name - @ViewBag.Category
             </strong><br />
-            <p style="font-size:10pt">Código: @ViewBag.Id</p><hr /><br />
+            <p style="font-size:10pt">Código: <span class="productId">@ViewBag.Id</span></p><hr /><br />
             <div class="form-inline buy-button-wrapper">
                 <div class="form-group form-inline buy-wrapper">
                     <label for="exampleInputName2">Qntd.:</label>
@@ -83,9 +88,19 @@
                     </button><br/>
                     <button class="btn btn-danger btn-xs">
                         <span class="glyphicon glyphicon-star-empty" aria-hidden="true"></span>
-                        <span style="margin-left: 5px;font-family: Candara; " class="buy-button" data-productid="6">Adicionar à lista de desejos</span>
-                    </button>
+                        <span style="margin-left: 5px;font-family: Candara; " class="add-to-list">Adicionar à lista de desejos</span>
+                    </button> <br/><br/>
                 </div>
+                <div class="wishlist-wrapper" style="display: none;">
+                    <select class="form-control ddl-list">
+                        @foreach (var list in @ViewBag.Lists)
+                        {
+                            <option value="@list.Id">@list.Name</option>
+                        }
+                    </select>
+                    <button class="btn btn-primary add-to-list-req">Adicionar</button>
+                </div>
+                <br /><br /><br /><br />
             </div>
             <br />
             <div>
@@ -115,23 +130,23 @@
                     </tr>
                     <tr>
                         <td>Descrição</td>
-                        <td>Feminino</td>
+                        <td>@ViewBag.Description</td>
                     </tr>
                     <tr>
                         <td>Gênero</td>
-                        <td>Feminino</td>
+                        <td>@ViewBag.Gender</td>
                     </tr>
                     <tr>
                         <td>Tamanhos</td>
-                        <td>G</td>
+                        <td>@ViewBag.Sizes</td>
                     </tr>
                     <tr>
                         <td>Composição</td>
-                        <td>G</td>
+                        <td>@ViewBag.Composition</td>
                     </tr>
                     <tr>
                         <td>Itens inclusos</td>
-                        <td>G</td>
+                        <td>@ViewBag.IncludedItems</td>
                     </tr>
                 </table>
             </div>

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using FantasyStore.Domain;
 using FantasyStore.Infrastructure.Repositories;
 
 namespace FantasyStore.Infrastructure
@@ -18,6 +19,15 @@ namespace FantasyStore.Infrastructure
         private UserRepository _users;
         private PaymentRepository _payments;
         private WishListRepository _wishLists;
+        private ProductFieldValueRepository _fieldValues;
+
+        public ProductFieldValueRepository FieldValues
+        {
+            get
+            {
+                return _fieldValues ?? (_fieldValues = new ProductFieldValueRepository(_context));
+            }
+        }
 
         public WishListRepository WishLists
         {

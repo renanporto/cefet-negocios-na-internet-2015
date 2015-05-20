@@ -60,5 +60,11 @@ namespace FantasyStore.Infrastructure.Repositories
                                       .Include(w => w.User)
                                       .FirstOrDefault(w => w.Id == id && w.User.Id.Equals(ownerId));
         }
+
+        public void Update(WishList wishList)
+        {
+            _context.WishLists.Attach(wishList);
+            _context.Entry(wishList).State = EntityState.Modified;
+        }
     }
 }

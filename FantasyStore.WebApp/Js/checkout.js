@@ -39,8 +39,7 @@ var Client = (function () {
         };
 
         $.ajax(ajaxConfig)
-            .done(function (data) {
-                alert(data);
+            .done(function () {
                 window.location.assign('http://localhost:26722/Checkout/Payment');
             });
 

@@ -209,7 +209,9 @@ namespace FantasyStore.WebApp.Controllers
         public ActionResult Products(int id)
         {
             var product = _unitOfWork.Products.Get(id);
-            
+
+            ViewBag.Lists = _unitOfWork.WishLists.GetAll();
+
             ViewBag.ImageUrl = product.Images.FirstOrDefault().Url;
             ViewBag.Name = product.Name;
             ViewBag.Id = product.Id;
@@ -217,6 +219,14 @@ namespace FantasyStore.WebApp.Controllers
             ViewBag.Price = (product.Price).ToString().Replace(".", ",");
             ViewBag.OldPrice = (product.Price + 40).ToString().Replace(".", ",");
             ViewBag.ProductId = product.Id;
+
+            var productFieldValues = _unitOfWork.FieldValues.GetByProduct(product.Id);
+
+            ViewBag.Description = product.Description;
+            ViewBag.Gender = productFieldValues.FirstOrDefault(f => f.Field.Equals("Genero")).Value;
+            ViewBag.Sizes = productFieldValues.FirstOrDefault(f => f.Field.Equals("Tamanhos")).Value;
+            ViewBag.Composition = productFieldValues.FirstOrDefault(f => f.Field.Equals("Composicao")).Value;
+            ViewBag.IncludedItems = productFieldValues.FirstOrDefault(f => f.Field.Equals("Itens inclusos")).Value;
 
             var installmentOptions = GetInstallmentOptions(product);
 

@@ -42,7 +42,11 @@ else
             <tr>
                 <td>
                     <div>
-                        <img src="@product.Images[0].ImageUrl" alt="@product.Images[0].Name" />
+                        @foreach (var image in @product.Images)
+                        {
+                            <img src="@image.Url" alt="@image.Name" />
+                        }
+                        
                         <strong>@product.Name </strong><br />
                     </div>
                 </td>

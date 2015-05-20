@@ -67,8 +67,21 @@ namespace FantasyStore.WebApp.Controllers
 
             @ViewBag.WishList = wishList;
             @ViewBag.CreatedAt = wishList.CreatedAt.ConvertFromUtc().ToString("dd/MM/yyyy hh:mm:ss");
+
+
             @ViewBag.Products = wishList.Products.Any() ? wishList.Products : null;
             return View();
+        }
+
+        public ActionResult AddToList(int listId, int productId)
+        {
+            var product = _unitOfWork.Products.Get(productId);
+            var wishList = _unitOfWork.WishLists.Get(listId);
+            wishList.Products.Add(product);
+            _unitOfWork.WishLists.Update(wishList);
+            _unitOfWork.Commit();
+
+            return Json(wishList.Id, JsonRequestBehavior.AllowGet);
         }
 
         private static string GenerateWishListsHtml(IEnumerable<WishList> wishLists)

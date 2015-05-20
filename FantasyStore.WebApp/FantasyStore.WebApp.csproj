@@ -162,6 +162,7 @@
     <Content Include="css\style.css" />
     <Content Include="Js\buy-button.js" />
     <Content Include="Js\checkout.js" />
+    <Content Include="Js\products.js" />
     <Content Include="Js\tracking.js" />
     <Content Include="Js\wishlist.js" />
     <Content Include="Scripts\vex.combined.min.js" />

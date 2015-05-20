@@ -27,5 +27,6 @@ namespace FantasyStore.Infrastructure
         public DbSet<Collection> Collections { get; set; }
         public DbSet<Cart> Carts { get; set; }
         public DbSet<Payment> Payments { get; set; }
+        public DbSet<ProductFieldValue> ProductFieldValues { get; set; }
     }
 }
